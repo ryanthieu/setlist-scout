@@ -1,0 +1,638 @@
+{
+  "created": "2026-09-01T23:50:15.703Z",
+  "count": 398,
+  "offset": 0,
+  "artists": [
+    {
+      "id": "efa2f016-ec5f-4a12-9857-c2801ea4704b",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 100,
+      "gender-id": "36d3d30a-839d-3eda-8cb3-29be4384e4a9",
+      "name": "Roland Kaiser",
+      "sort-name": "Kaiser, Roland",
+      "gender": "male",
+      "country": "DE",
+      "area": {
+        "id": "85752fda-13c4-31a3-bee5-0e5cb1f51dad",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "Germany",
+        "sort-name": "Germany",
+        "life-span": { "ended": null }
+      },
+      "begin-area": {
+        "id": "c9ac1239-e832-41bc-9930-e252a1fd1105",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Berlin",
+        "sort-name": "Berlin",
+        "life-span": { "ended": null }
+      },
+      "ipis": ["00038848053", "00038848151"],
+      "isnis": ["0000000079782340", "0000000080941011"],
+      "life-span": { "begin": "1952-05-10", "ended": null },
+      "aliases": [
+        {
+          "sort-name": "Roland Kaier",
+          "name": "Roland Kaier",
+          "locale": null,
+          "type": null,
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "Keiler, Ronald",
+          "type-id": "d4dcd0c0-b341-3612-a332-c0ce797b25cf",
+          "name": "Ronald Keiler",
+          "locale": null,
+          "type": "Legal name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        }
+      ],
+      "tags": [{ "count": 3, "name": "schlager" }]
+    },
+    {
+      "id": "90218af4-4d58-4821-8d41-2ee295ebbe21",
+      "type": "Group",
+      "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+      "score": 93,
+      "name": "Kaiser Chiefs",
+      "sort-name": "Kaiser Chiefs",
+      "country": "GB",
+      "area": {
+        "id": "8a754a16-0027-3a29-b6d7-2b40ea0481ed",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "United Kingdom",
+        "sort-name": "United Kingdom",
+        "life-span": { "ended": null }
+      },
+      "begin-area": {
+        "id": "116e3eb1-2b14-42c9-91a1-7a2510dcc4b3",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Leeds",
+        "sort-name": "Leeds",
+        "life-span": { "ended": null }
+      },
+      "isnis": ["0000000123370838"],
+      "life-span": { "begin": "2003", "ended": null },
+      "aliases": [
+        {
+          "sort-name": "The Kaiser Chiefs",
+          "name": "The Kaiser Chiefs",
+          "locale": null,
+          "type": null,
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "Kaiser Cheifs",
+          "name": "Kaiser Cheifs",
+          "locale": null,
+          "type": null,
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        }
+      ],
+      "tags": [
+        { "count": 1, "name": "rock" },
+        { "count": 0, "name": "synthpop" },
+        { "count": 1, "name": "alternative rock" },
+        { "count": 4, "name": "british" },
+        { "count": 0, "name": "uk" },
+        { "count": 6, "name": "indie rock" },
+        { "count": 1, "name": "power pop" },
+        { "count": 0, "name": "indie" },
+        { "count": 0, "name": "alternative" },
+        { "count": 1, "name": "synth-pop" },
+        { "count": 4, "name": "britpop" },
+        { "count": 3, "name": "dance-pop" },
+        { "count": 1, "name": "post-punk revival" },
+        { "count": 1, "name": "pop rock" },
+        { "count": 0, "name": "english" },
+        { "count": 0, "name": "rock and indie" }
+      ]
+    },
+    {
+      "id": "4b1f5f1b-0ed0-4ff8-8078-85b3fb191fd7",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 88,
+      "gender-id": "36d3d30a-839d-3eda-8cb3-29be4384e4a9",
+      "name": "ကိုင်ဇာ",
+      "sort-name": "Kai Zar",
+      "gender": "male",
+      "country": "MM",
+      "area": {
+        "id": "fb1fb575-39ee-34d8-a744-6a880700fd73",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "Myanmar",
+        "sort-name": "Myanmar",
+        "life-span": { "ended": null }
+      },
+      "end-area": {
+        "id": "eedf4278-f084-4da4-9873-0aa4ca3c2f25",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Yangon",
+        "sort-name": "Yangon",
+        "life-span": { "ended": null }
+      },
+      "life-span": {
+        "begin": "1961-02-18",
+        "end": "2026-08-22",
+        "ended": true
+      },
+      "aliases": [
+        {
+          "sort-name": "Kaiser",
+          "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+          "name": "Kaiser",
+          "locale": "en",
+          "type": "Artist name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        }
+      ],
+      "tags": [
+        { "count": 1, "name": "singer-songwriter" },
+        { "count": 1, "name": "burmese stereo" }
+      ]
+    },
+    {
+      "id": "3b4ce4be-55a1-44bb-abdc-bcc504f30ca1",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 87,
+      "gender-id": "36d3d30a-839d-3eda-8cb3-29be4384e4a9",
+      "name": "Henry Kaiser",
+      "sort-name": "Kaiser, Henry",
+      "gender": "male",
+      "country": "US",
+      "area": {
+        "id": "489ce91b-6658-3307-9877-795b68554c98",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "United States",
+        "sort-name": "United States",
+        "life-span": { "ended": null }
+      },
+      "begin-area": {
+        "id": "6195f381-5711-4655-bf7c-75918c04b201",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Oakland",
+        "sort-name": "Oakland",
+        "life-span": { "ended": null }
+      },
+      "isnis": ["0000000115766998"],
+      "life-span": { "begin": "1952-09-19", "ended": null },
+      "tags": [
+        { "count": 2, "name": "jazz" },
+        { "count": 1, "name": "jazz rock" },
+        { "count": 1, "name": "art rock" },
+        { "count": 1, "name": "experimental rock" },
+        { "count": 1, "name": "jazz fusion" },
+        { "count": 1, "name": "avant-garde jazz" },
+        { "count": 2, "name": "free improvisation" }
+      ]
+    },
+    {
+      "id": "04dc4888-2742-4249-b3f5-d2f6b0c19850",
+      "score": 84,
+      "name": "Kaiser",
+      "sort-name": "Kaiser",
+      "disambiguation": "techno producer Gianluca Caiati",
+      "life-span": { "ended": null },
+      "aliases": [
+        {
+          "sort-name": "Kaiser (K S R)",
+          "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+          "name": "Kaiser (K S R)",
+          "locale": null,
+          "type": "Artist name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        }
+      ]
+    },
+    {
+      "id": "1dda8694-ceb6-407d-907f-7a10add48d45",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 84,
+      "gender-id": "36d3d30a-839d-3eda-8cb3-29be4384e4a9",
+      "name": "Kaiser",
+      "sort-name": "Kaiser",
+      "gender": "male",
+      "disambiguation": "Drum & Bass artist Arthur Eisele",
+      "life-span": { "ended": null },
+      "aliases": [
+        {
+          "sort-name": "Eisele, Arthur",
+          "type-id": "d4dcd0c0-b341-3612-a332-c0ce797b25cf",
+          "name": "Arthur Eisele",
+          "locale": null,
+          "type": "Legal name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        }
+      ]
+    },
+    {
+      "id": "2a352f93-0f74-4e65-befa-d2795b4bb34a",
+      "type": "Group",
+      "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+      "score": 83,
+      "name": "Kaiser",
+      "sort-name": "Kaiser",
+      "area": {
+        "id": "39d62198-1e76-4de4-b079-e86e3a393bbc",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Helsinki",
+        "sort-name": "Helsinki",
+        "life-span": { "ended": null }
+      },
+      "begin-area": {
+        "id": "39d62198-1e76-4de4-b079-e86e3a393bbc",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Helsinki",
+        "sort-name": "Helsinki",
+        "life-span": { "ended": null }
+      },
+      "disambiguation": "Stoner / fuzz rock band from Helsinki, Finland",
+      "life-span": { "begin": "2013", "ended": null },
+      "tags": [
+        { "count": 0, "name": "doom" },
+        { "count": 1, "name": "fuzz rock" },
+        { "count": 1, "name": "stoner rock" },
+        { "count": 0, "name": "sludge" },
+        { "count": 1, "name": "rock" },
+        { "count": 1, "name": "desert rock" },
+        { "count": 1, "name": "stoner metal" }
+      ]
+    },
+    {
+      "id": "ca496240-f916-44ec-8e31-8df3c5b84135",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 82,
+      "name": "Kaiser",
+      "sort-name": "Kaiser",
+      "disambiguation": "Farsi/Persian artist",
+      "life-span": { "ended": null }
+    },
+    {
+      "id": "78102052-569a-4068-b5f7-92d38834a292",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 82,
+      "gender-id": "36d3d30a-839d-3eda-8cb3-29be4384e4a9",
+      "name": "Kaiser",
+      "sort-name": "Kaiser",
+      "gender": "male",
+      "country": "BD",
+      "area": {
+        "id": "20395c3e-610c-34fd-9995-6b6f299121f2",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "Bangladesh",
+        "sort-name": "Bangladesh",
+        "life-span": { "ended": null }
+      },
+      "disambiguation": "Bangladeshi poet and musician",
+      "life-span": { "ended": null },
+      "aliases": [
+        {
+          "sort-name": "Islam, Kaiser Mohammed",
+          "type-id": "d4dcd0c0-b341-3612-a332-c0ce797b25cf",
+          "name": "Kaiser Mohammed Islam",
+          "locale": "en",
+          "type": "Legal name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        }
+      ]
+    },
+    {
+      "id": "7a6817e4-c0ca-4021-bb40-accd80181461",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 81,
+      "gender-id": "36d3d30a-839d-3eda-8cb3-29be4384e4a9",
+      "name": "Glenn Kaiser",
+      "sort-name": "Kaiser, Glenn",
+      "gender": "male",
+      "country": "US",
+      "area": {
+        "id": "489ce91b-6658-3307-9877-795b68554c98",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "United States",
+        "sort-name": "United States",
+        "life-span": { "ended": null }
+      },
+      "begin-area": {
+        "id": "4dc3fa97-cf9b-43f0-bec9-fcc52d6215d5",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Milwaukee",
+        "sort-name": "Milwaukee",
+        "life-span": { "ended": null }
+      },
+      "life-span": { "begin": "1953-01-21", "ended": null },
+      "aliases": [
+        {
+          "sort-name": "Kaiser, Glen",
+          "name": "Glen Kaiser",
+          "locale": null,
+          "type": null,
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        }
+      ],
+      "tags": [
+        { "count": 1, "name": "blues" },
+        { "count": 1, "name": "blues rock" },
+        { "count": 1, "name": "christian rock" },
+        { "count": 1, "name": "contemporary christian" }
+      ]
+    },
+    {
+      "id": "b658357e-4cda-4712-bb3c-be4abff267d6",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 81,
+      "gender-id": "36d3d30a-839d-3eda-8cb3-29be4384e4a9",
+      "name": "Kaiser",
+      "sort-name": "Kaiser",
+      "gender": "male",
+      "country": "ES",
+      "area": {
+        "id": "471c46a7-afc5-31c4-923c-d0444f5053a4",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "Spain",
+        "sort-name": "Spain",
+        "life-span": { "ended": null }
+      },
+      "disambiguation": "makina DJ Miguel Sánchez",
+      "life-span": { "ended": null },
+      "aliases": [
+        {
+          "sort-name": "Sánchez, Miguel",
+          "type-id": "d4dcd0c0-b341-3612-a332-c0ce797b25cf",
+          "name": "Miguel Sánchez",
+          "locale": null,
+          "type": "Legal name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        }
+      ]
+    },
+    {
+      "id": "16f6e261-72d9-43e7-9a70-4aea82c25ba6",
+      "score": 81,
+      "name": "Kaiser",
+      "sort-name": "Kaiser",
+      "disambiguation": "Lima Punk",
+      "life-span": { "ended": null }
+    },
+    {
+      "id": "d92a0346-d973-475d-9b36-4c2e0c7530d8",
+      "score": 81,
+      "name": "Kaiser",
+      "sort-name": "Kaiser",
+      "disambiguation": "Hard Rock",
+      "life-span": { "ended": null }
+    },
+    {
+      "id": "d407efdc-b1f6-4cf8-8c64-c7578f436538",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 81,
+      "gender-id": "36d3d30a-839d-3eda-8cb3-29be4384e4a9",
+      "name": "Kaiser",
+      "sort-name": "Kaiser",
+      "gender": "male",
+      "country": "CH",
+      "area": {
+        "id": "1333ff06-8e3d-3c8e-9f3a-13a2a38b41df",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "Switzerland",
+        "sort-name": "Switzerland",
+        "life-span": { "ended": null }
+      },
+      "begin-area": {
+        "id": "1333ff06-8e3d-3c8e-9f3a-13a2a38b41df",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "Switzerland",
+        "sort-name": "Switzerland",
+        "life-span": { "ended": null }
+      },
+      "disambiguation": "Swiss rapper",
+      "life-span": { "begin": "1977-02-02", "ended": null }
+    },
+    {
+      "id": "46d8e72a-42c8-4b60-a995-727533e7a00d",
+      "score": 81,
+      "name": "KAISER",
+      "sort-name": "KAISER",
+      "disambiguation": "idk producer of depth strida tracks",
+      "life-span": { "ended": null }
+    },
+    {
+      "id": "19314bfb-5e51-4993-95f0-f7b2eaa70983",
+      "score": 81,
+      "name": "Kaiser",
+      "sort-name": "Kaiser",
+      "disambiguation": "track \"Broken\" on Flash Recordings comp",
+      "life-span": { "ended": null }
+    },
+    {
+      "id": "57e25d9c-5c72-4ace-941f-c4f1de78e6bf",
+      "type": "Character",
+      "type-id": "5c1375b0-f18d-3db7-a164-a49d7a63773f",
+      "score": 81,
+      "gender-id": "36d3d30a-839d-3eda-8cb3-29be4384e4a9",
+      "name": "Kaiser",
+      "sort-name": "Kaiser",
+      "gender": "male",
+      "country": "DK",
+      "area": {
+        "id": "4757b525-2a60-324a-b060-578765d2c993",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "Denmark",
+        "sort-name": "Denmark",
+        "life-span": { "ended": null }
+      },
+      "begin-area": {
+        "id": "4757b525-2a60-324a-b060-578765d2c993",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "Denmark",
+        "sort-name": "Denmark",
+        "life-span": { "ended": null }
+      },
+      "disambiguation": "Character from the TV-Series Alle Kender Kaise",
+      "life-span": { "ended": null }
+    },
+    {
+      "id": "00a2b028-a1c8-444c-8687-450ff2971bb3",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 81,
+      "name": "Kaiser",
+      "sort-name": "Kaiser",
+      "country": "ES",
+      "area": {
+        "id": "471c46a7-afc5-31c4-923c-d0444f5053a4",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "Spain",
+        "sort-name": "Spain",
+        "life-span": { "ended": null }
+      },
+      "disambiguation": "Spanish hip-hop producer",
+      "life-span": { "ended": null }
+    },
+    {
+      "id": "60260f2b-79a6-470a-9824-ac501cc085c8",
+      "type": "Group",
+      "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+      "score": 81,
+      "name": "Kaiser",
+      "sort-name": "Kaiser",
+      "disambiguation": "Arizona Hair Band",
+      "life-span": { "begin": "1985", "ended": null }
+    },
+    {
+      "id": "c7fd2f6c-560b-47e3-9141-1b36b81be69c",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 81,
+      "name": "kaiser",
+      "sort-name": "kaiser",
+      "disambiguation": "percussionist from Chemnitz, Germany",
+      "life-span": { "ended": null }
+    },
+    {
+      "id": "827049c2-73b1-4a09-a57b-10f6317177bc",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 81,
+      "gender-id": "36d3d30a-839d-3eda-8cb3-29be4384e4a9",
+      "name": "Kaiser",
+      "sort-name": "Kaiser",
+      "gender": "male",
+      "area": {
+        "id": "d0db0e5b-de99-40c5-8c39-b7ed17b36d0d",
+        "type": "Subdivision",
+        "type-id": "fd3d44c5-80a1-3842-9745-2c4972d35afa",
+        "name": "Provence-Alpes-Côte-d'Azur",
+        "sort-name": "Provence-Alpes-Côte-d'Azur",
+        "life-span": { "ended": null }
+      },
+      "disambiguation": "Southern France rapper / 3K",
+      "life-span": { "ended": null }
+    },
+    {
+      "id": "184c6218-e6bf-454d-bcd1-12bd47cbbc32",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 81,
+      "name": "Kaiser",
+      "sort-name": "Kaiser",
+      "country": "DE",
+      "area": {
+        "id": "85752fda-13c4-31a3-bee5-0e5cb1f51dad",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "Germany",
+        "sort-name": "Germany",
+        "life-span": { "ended": null }
+      },
+      "disambiguation": "of Scrapy",
+      "life-span": { "ended": null }
+    },
+    {
+      "id": "b07aa414-949c-4a0a-8869-098ce761bd2e",
+      "score": 80,
+      "name": "Kaiser Maschine",
+      "sort-name": "Kaiser Maschine",
+      "area": {
+        "id": "f03d09b3-39dc-4083-afd6-159e3f0d462f",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "London",
+        "sort-name": "London",
+        "life-span": { "ended": null }
+      },
+      "life-span": { "ended": null }
+    },
+    {
+      "id": "c760c457-bb25-475a-9e3e-4147d2aeb70f",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 79,
+      "gender-id": "36d3d30a-839d-3eda-8cb3-29be4384e4a9",
+      "name": "Kaiza",
+      "sort-name": "Kaiza",
+      "gender": "male",
+      "country": "DE",
+      "area": {
+        "id": "85752fda-13c4-31a3-bee5-0e5cb1f51dad",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "Germany",
+        "sort-name": "Germany",
+        "life-span": { "ended": null }
+      },
+      "disambiguation": "German drum & bass artist & label O/O; Florian Kaizer",
+      "life-span": { "ended": null },
+      "aliases": [
+        {
+          "sort-name": "Kaiser, Florian",
+          "type-id": "d4dcd0c0-b341-3612-a332-c0ce797b25cf",
+          "name": "Florian Kaiser",
+          "locale": null,
+          "type": "Legal name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        }
+      ],
+      "tags": [{ "count": 2, "name": "drum and bass" }]
+    },
+    {
+      "id": "16d6b5ff-9c9c-43d6-adcb-29a649690d93",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 78,
+      "gender-id": "36d3d30a-839d-3eda-8cb3-29be4384e4a9",
+      "name": "Niels Kaiser",
+      "sort-name": "Kaiser, Niels",
+      "gender": "male",
+      "life-span": { "ended": null }
+    }
+  ]
+}

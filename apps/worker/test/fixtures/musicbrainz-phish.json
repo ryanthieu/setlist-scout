@@ -1,0 +1,549 @@
+{
+  "created": "2026-09-01T23:47:07.636Z",
+  "count": 72,
+  "offset": 0,
+  "artists": [
+    {
+      "id": "e01646f2-2a04-450d-8bf2-0d993082e058",
+      "type": "Group",
+      "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+      "score": 100,
+      "name": "Phish",
+      "sort-name": "Phish",
+      "country": "US",
+      "area": {
+        "id": "489ce91b-6658-3307-9877-795b68554c98",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "United States",
+        "sort-name": "United States",
+        "life-span": { "ended": null }
+      },
+      "begin-area": {
+        "id": "453f5392-25d8-408e-b648-321b904e3439",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Burlington",
+        "sort-name": "Burlington",
+        "life-span": { "ended": null }
+      },
+      "disambiguation": "American rock band formed in Burlington, Vermont, in 1983",
+      "isnis": ["0000000106626459"],
+      "life-span": { "begin": "1983", "ended": null },
+      "tags": [
+        { "count": 10, "name": "rock" },
+        { "count": 1, "name": "alternative rock" },
+        { "count": 6, "name": "progressive rock" },
+        { "count": 0, "name": "jazz" },
+        { "count": 0, "name": "american" },
+        { "count": 1, "name": "funk" },
+        { "count": 3, "name": "funk rock" },
+        { "count": 2, "name": "jazz rock" },
+        { "count": 2, "name": "psychedelic rock" },
+        { "count": 12, "name": "jam band" },
+        { "count": 1, "name": "jazz fusion" },
+        { "count": 0, "name": "jam" },
+        { "count": 0, "name": "jazz-rock" },
+        { "count": 0, "name": "aln-sh" }
+      ]
+    },
+    {
+      "id": "7d133cdb-ceed-4d1b-b3ca-c62896ae2df4",
+      "type": "Group",
+      "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+      "score": 60,
+      "name": "Phish Heads",
+      "sort-name": "Phish Heads",
+      "area": {
+        "id": "11a44e18-a2e5-43a9-bee9-aa4f7c83f967",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Hamburg",
+        "sort-name": "Hamburg",
+        "life-span": { "ended": null }
+      },
+      "begin-area": {
+        "id": "11a44e18-a2e5-43a9-bee9-aa4f7c83f967",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Hamburg",
+        "sort-name": "Hamburg",
+        "life-span": { "ended": null }
+      },
+      "life-span": { "begin": "2024", "ended": null },
+      "tags": [
+        { "count": 1, "name": "jazz" },
+        { "count": 1, "name": "jazz rock" }
+      ]
+    },
+    {
+      "id": "a472f842-ef88-46e1-a282-b7a20b9c8c6c",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 60,
+      "name": "J-Phish",
+      "sort-name": "J Phish",
+      "life-span": { "ended": null }
+    },
+    {
+      "id": "4910ffc5-9d40-401e-b040-4cddb1586d6e",
+      "score": 60,
+      "name": "Cell-Phish",
+      "sort-name": "Cell-Phish",
+      "life-span": { "ended": null }
+    },
+    {
+      "id": "d2a01429-82f5-4b25-9c06-db455af77fd5",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 60,
+      "gender-id": "36d3d30a-839d-3eda-8cb3-29be4384e4a9",
+      "name": "Zen Phish",
+      "sort-name": "Zen Phish",
+      "gender": "male",
+      "country": "EE",
+      "area": {
+        "id": "e1c1215f-dcc0-35b4-b840-d2ca2151593b",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "Estonia",
+        "sort-name": "Estonia",
+        "life-span": { "ended": null }
+      },
+      "life-span": { "ended": null }
+    },
+    {
+      "id": "856dc614-1579-4290-8d84-4e3175dd41d5",
+      "score": 60,
+      "name": "Phish Bowl",
+      "sort-name": "Phish Bowl",
+      "life-span": { "begin": "2024", "ended": null }
+    },
+    {
+      "id": "2f195f7d-61df-4e9e-8d79-897a4075ce99",
+      "score": 60,
+      "name": "Bad Phish",
+      "sort-name": "Bad Phish",
+      "life-span": { "ended": null }
+    },
+    {
+      "id": "fbb949fc-ecea-46b5-a687-d73a8b62591a",
+      "type": "Group",
+      "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+      "score": 54,
+      "name": "Big Eyed Phish",
+      "sort-name": "Big Eyed Phish",
+      "area": {
+        "id": "17203e02-355a-40db-a524-980192eb9d0f",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Rochester",
+        "sort-name": "Rochester",
+        "life-span": { "ended": null }
+      },
+      "begin-area": {
+        "id": "17203e02-355a-40db-a524-980192eb9d0f",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Rochester",
+        "sort-name": "Rochester",
+        "life-span": { "ended": null }
+      },
+      "life-span": { "begin": "2007-01-01", "ended": null }
+    },
+    {
+      "id": "fbcba38e-b0f0-41b0-99bb-084e654131ac",
+      "type": "Group",
+      "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+      "score": 54,
+      "name": "Dead Phish Orchestra",
+      "sort-name": "Dead Phish Orchestra",
+      "country": "US",
+      "area": {
+        "id": "489ce91b-6658-3307-9877-795b68554c98",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "United States",
+        "sort-name": "United States",
+        "life-span": { "ended": null }
+      },
+      "begin-area": {
+        "id": "fc1aee9a-f1a8-45dc-8820-af6b5d7f7450",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Denver",
+        "sort-name": "Denver",
+        "life-span": { "ended": null }
+      },
+      "life-span": { "begin": "2009", "ended": null }
+    },
+    {
+      "id": "8b304747-e3b0-40d3-8f59-32ac79d5a7ef",
+      "type": "Group",
+      "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+      "score": 54,
+      "name": "Readicculus (Phish Tribute)",
+      "sort-name": "Readicculus (Phish Tribute)",
+      "area": {
+        "id": "0dd9f772-7cd1-402f-8627-5121eed4f8ad",
+        "type": "Island",
+        "type-id": "3f8e7b66-058b-369b-9834-ffa5fcba5641",
+        "name": "Long Island",
+        "sort-name": "Long Island",
+        "life-span": { "ended": null }
+      },
+      "life-span": { "ended": null }
+    },
+    {
+      "id": "fcc010bb-d46a-48f5-8f06-432035b53b11",
+      "type": "Group",
+      "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+      "score": 52,
+      "name": "Port Fish",
+      "sort-name": "Port Fish",
+      "area": {
+        "id": "f37f3392-51d6-489e-9962-9babbe5e80c7",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Košice",
+        "sort-name": "Košice",
+        "life-span": { "ended": null }
+      },
+      "begin-area": {
+        "id": "f37f3392-51d6-489e-9962-9babbe5e80c7",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Košice",
+        "sort-name": "Košice",
+        "life-span": { "ended": null }
+      },
+      "disambiguation": "electronic music",
+      "life-span": { "begin": "2006-11-19", "ended": null },
+      "aliases": [
+        {
+          "sort-name": "PortFish",
+          "name": "PortFish",
+          "locale": null,
+          "type": null,
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "Fort Phish",
+          "type-id": "1937e404-b981-3cb7-8151-4c86ebfc8d8e",
+          "name": "Fort Phish",
+          "locale": null,
+          "type": "Search hint",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "Port Fish",
+          "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+          "name": "Port Fish",
+          "locale": null,
+          "type": "Artist name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        }
+      ]
+    },
+    {
+      "id": "52c2dff8-fcbf-45a5-8b15-c32d3abb22b7",
+      "score": 50,
+      "name": "Sarah Elaz's Almost Phish",
+      "sort-name": "Sarah Elaz's Almost Phish",
+      "disambiguation": "Brooklyn-based Phish tribute",
+      "life-span": { "begin": "2022", "ended": null }
+    },
+    {
+      "id": "d942f71b-09d3-406c-8f7d-c52eba3135c1",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 49,
+      "gender-id": "36d3d30a-839d-3eda-8cb3-29be4384e4a9",
+      "name": "Trey Anastasio",
+      "sort-name": "Anastasio, Trey",
+      "gender": "male",
+      "country": "US",
+      "area": {
+        "id": "489ce91b-6658-3307-9877-795b68554c98",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "United States",
+        "sort-name": "United States",
+        "life-span": { "ended": null }
+      },
+      "begin-area": {
+        "id": "ae96202a-e993-45de-adfe-a8c6b66a781d",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Fort Worth",
+        "sort-name": "Fort Worth",
+        "life-span": { "ended": null }
+      },
+      "disambiguation": "US jam band Phish lead singer",
+      "ipis": ["00240510028", "00240510322", "00240510420"],
+      "isnis": ["0000000114506940"],
+      "life-span": { "begin": "1964-09-30", "ended": null },
+      "aliases": [
+        {
+          "sort-name": "Anastasio",
+          "name": "Anastasio",
+          "locale": "en",
+          "type": null,
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "Ernest Joseph Anastasio III",
+          "type-id": "d4dcd0c0-b341-3612-a332-c0ce797b25cf",
+          "name": "Ernest Joseph Anastasio III",
+          "locale": null,
+          "type": "Legal name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        }
+      ],
+      "tags": [
+        { "count": 2, "name": "progressive rock" },
+        { "count": 0, "name": "indie" },
+        { "count": 2, "name": "experimental rock" },
+        { "count": 1, "name": "jazz fusion" }
+      ]
+    },
+    {
+      "id": "c172276a-fcbf-4477-894a-f37d1582557e",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 48,
+      "gender-id": "36d3d30a-839d-3eda-8cb3-29be4384e4a9",
+      "name": "Mike Gordon",
+      "sort-name": "Gordon, Mike",
+      "gender": "male",
+      "country": "US",
+      "area": {
+        "id": "489ce91b-6658-3307-9877-795b68554c98",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "United States",
+        "sort-name": "United States",
+        "life-span": { "ended": null }
+      },
+      "begin-area": {
+        "id": "81e1bae9-00b8-4f31-b0da-8e1df5ae6a79",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Sudbury",
+        "sort-name": "Sudbury",
+        "life-span": { "ended": null }
+      },
+      "disambiguation": "member of Phish",
+      "ipis": ["00236873444", "00236873542"],
+      "isnis": ["000000003682837X"],
+      "life-span": { "begin": "1965-06-03", "ended": null },
+      "aliases": [
+        {
+          "sort-name": "Gordon, Michael Eliot",
+          "type-id": "d4dcd0c0-b341-3612-a332-c0ce797b25cf",
+          "name": "Michael Eliot Gordon",
+          "locale": null,
+          "type": "Legal name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        }
+      ],
+      "tags": [
+        { "count": 1, "name": "rock" },
+        { "count": 1, "name": "jam band" }
+      ]
+    },
+    {
+      "id": "7c3f25f4-bfec-450d-8e07-7d3e768a8a84",
+      "score": 44,
+      "name": "Uncle Ebenezer- A Tribute to Phish",
+      "sort-name": "Uncle Ebenezer- A Tribute to Phish",
+      "life-span": { "ended": null }
+    },
+    {
+      "id": "173048c5-4cb8-4524-aa6c-b9a8c87feefb",
+      "type": "Group",
+      "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+      "score": 42,
+      "name": "Solar Garlic - A Tribute to Phish",
+      "sort-name": "Solar Garlic - A Tribute to Phish",
+      "area": {
+        "id": "1fee56fe-5b76-4a50-bc63-37ee51d3300f",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Syracuse",
+        "sort-name": "Syracuse",
+        "life-span": { "ended": null }
+      },
+      "begin-area": {
+        "id": "1fee56fe-5b76-4a50-bc63-37ee51d3300f",
+        "type": "City",
+        "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+        "name": "Syracuse",
+        "sort-name": "Syracuse",
+        "life-span": { "ended": null }
+      },
+      "disambiguation": "Phish Tribute Band",
+      "life-span": { "begin": "2012", "ended": null }
+    },
+    {
+      "id": "cd651de6-1f09-40e6-a5ce-acbe97cabec9",
+      "type": "Group",
+      "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+      "score": 41,
+      "name": "Dreamphish",
+      "sort-name": "Dreamphish",
+      "country": "EE",
+      "area": {
+        "id": "e1c1215f-dcc0-35b4-b840-d2ca2151593b",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "Estonia",
+        "sort-name": "Estonia",
+        "life-span": { "ended": null }
+      },
+      "life-span": { "begin": "1995", "ended": null },
+      "tags": [{ "count": 1, "name": "indie" }]
+    },
+    {
+      "id": "dd13cc57-cda8-4117-9392-d632e8d0c744",
+      "type": "Group",
+      "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+      "score": 41,
+      "name": "Phoush",
+      "sort-name": "Phoush: A New Orleans Phish Tribute",
+      "disambiguation": "New Orleans Phish Tribute",
+      "life-span": { "ended": null }
+    },
+    {
+      "id": "ba150be4-db20-4930-83a2-a0b8bfd4e65e",
+      "score": 41,
+      "name": "The Lawn Boys - A Tribute to Phish",
+      "sort-name": "The Lawn Boys - A Tribute to Phish",
+      "disambiguation": "Phish cover band",
+      "life-span": { "ended": null }
+    },
+    {
+      "id": "53ba8c50-64ac-49d6-a05b-1a31bfc7fbfb",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 40,
+      "gender-id": "36d3d30a-839d-3eda-8cb3-29be4384e4a9",
+      "name": "Tom Marshall",
+      "sort-name": "Marshall, Tom",
+      "gender": "male",
+      "country": "US",
+      "area": {
+        "id": "489ce91b-6658-3307-9877-795b68554c98",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "United States",
+        "sort-name": "United States",
+        "life-span": { "ended": null }
+      },
+      "begin-area": {
+        "id": "a36544c1-cb40-4f44-9e0e-7a5a69e403a8",
+        "type": "Subdivision",
+        "type-id": "fd3d44c5-80a1-3842-9745-2c4972d35afa",
+        "name": "New Jersey",
+        "sort-name": "New Jersey",
+        "life-span": { "ended": null }
+      },
+      "disambiguation": "lyricist for Phish",
+      "ipis": ["00237144678"],
+      "life-span": { "begin": "1963-11-12", "ended": null },
+      "aliases": [
+        {
+          "sort-name": "Marshal, Tom",
+          "name": "Tom Marshal",
+          "locale": null,
+          "type": null,
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "Marshall, Thomas",
+          "type-id": "d4dcd0c0-b341-3612-a332-c0ce797b25cf",
+          "name": "Thomas Marshall",
+          "locale": null,
+          "type": "Legal name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        }
+      ]
+    },
+    {
+      "id": "f94284b2-b28e-47e9-869e-02fa8984f8d2",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 40,
+      "gender-id": "36d3d30a-839d-3eda-8cb3-29be4384e4a9",
+      "name": "Scott Schneider",
+      "sort-name": "Schneider, Scott",
+      "gender": "male",
+      "disambiguation": "Phish taper",
+      "life-span": { "ended": null }
+    },
+    {
+      "id": "5aed18e8-ff5c-49f4-a99c-b15298102791",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 40,
+      "gender-id": "36d3d30a-839d-3eda-8cb3-29be4384e4a9",
+      "name": "Don Wright",
+      "sort-name": "Wright, Don",
+      "gender": "male",
+      "disambiguation": "Phish taper",
+      "life-span": { "ended": null }
+    },
+    {
+      "id": "118e4d5b-c0bd-45f5-b378-feaf958ab707",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 40,
+      "gender-id": "36d3d30a-839d-3eda-8cb3-29be4384e4a9",
+      "name": "Chris King",
+      "sort-name": "King, Chris",
+      "gender": "male",
+      "disambiguation": "Phish taper",
+      "life-span": { "ended": null }
+    },
+    {
+      "id": "e1da1154-8c29-494f-867d-0f343414ef93",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 40,
+      "gender-id": "36d3d30a-839d-3eda-8cb3-29be4384e4a9",
+      "name": "Lenny Stubbe",
+      "sort-name": "Stubbe, Lenny",
+      "gender": "male",
+      "disambiguation": "Phish taper",
+      "life-span": { "ended": null }
+    },
+    {
+      "id": "c649767f-9638-495c-90f0-16b967f7e770",
+      "type": "Person",
+      "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+      "score": 40,
+      "gender-id": "36d3d30a-839d-3eda-8cb3-29be4384e4a9",
+      "name": "Jared Slomoff",
+      "sort-name": "Slomoff, Jared",
+      "gender": "male",
+      "disambiguation": "Phish engineer",
+      "life-span": { "ended": null }
+    }
+  ]
+}
