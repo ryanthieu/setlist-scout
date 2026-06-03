@@ -1,0 +1,1679 @@
+{
+  "type": "setlists",
+  "itemsPerPage": 20,
+  "page": 1,
+  "total": 228,
+  "setlist": [
+    {
+      "id": "33715cdd",
+      "versionId": "g7b0e42f8",
+      "eventDate": "01-09-2026",
+      "lastUpdated": "2026-08-30T19:54:47.810+0000",
+      "artist": {
+        "mbid": "6925db17-f35e-42f3-a4eb-84ee6bf5d4b0",
+        "name": "Olivia Rodrigo",
+        "sortName": "Rodrigo, Olivia",
+        "disambiguation": "US singer‐songwriter",
+        "url": "https://www.setlist.fm/setlists/olivia-rodrigo-bc9194e.html"
+      },
+      "venue": {
+        "id": "3bdfcc5c",
+        "name": "The Ray Charles Terrace",
+        "city": {
+          "id": "5368361",
+          "name": "Los Angeles",
+          "state": "California",
+          "stateCode": "CA",
+          "coords": {
+            "lat": 34.052,
+            "long": -118.244
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/the-ray-charles-terrace-los-angeles-ca-usa-3bdfcc5c.html"
+      },
+      "sets": {
+        "set": []
+      },
+      "url": "https://www.setlist.fm/setlist/olivia-rodrigo/2026/the-ray-charles-terrace-los-angeles-ca-33715cdd.html"
+    },
+    {
+      "id": "6372caa7",
+      "versionId": "g6b0f9212",
+      "eventDate": "29-08-2026",
+      "lastUpdated": "2026-09-01T06:27:55.033+0000",
+      "artist": {
+        "mbid": "6925db17-f35e-42f3-a4eb-84ee6bf5d4b0",
+        "name": "Olivia Rodrigo",
+        "sortName": "Rodrigo, Olivia",
+        "disambiguation": "US singer‐songwriter",
+        "url": "https://www.setlist.fm/setlists/olivia-rodrigo-bc9194e.html"
+      },
+      "venue": {
+        "id": "6bdfca1e",
+        "name": "Dandelion Stage",
+        "city": {
+          "id": "5359777",
+          "name": "Irvine",
+          "state": "California",
+          "stateCode": "CA",
+          "coords": {
+            "lat": 33.6694649,
+            "long": -117.8231107
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/dandelion-stage-irvine-ca-usa-6bdfca1e.html"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "drop dead"
+              },
+              {
+                "name": "bad idea right?"
+              },
+              {
+                "name": "good 4 u"
+              },
+              {
+                "name": "my way"
+              },
+              {
+                "name": "serena joy",
+                "info": "live debut"
+              },
+              {
+                "name": "maggots for brains",
+                "info": "performed with guitar"
+              },
+              {
+                "name": "stupid song"
+              },
+              {
+                "name": "Building a Mystery",
+                "cover": {
+                  "mbid": "ce58d854-7430-4231-aa44-97f0144b3372",
+                  "name": "Sarah McLachlan",
+                  "sortName": "McLachlan, Sarah",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/sarah-mclachlan-13d6b9f9.html"
+                },
+                "with": {
+                  "mbid": "ce58d854-7430-4231-aa44-97f0144b3372",
+                  "name": "Sarah McLachlan",
+                  "sortName": "McLachlan, Sarah",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/sarah-mclachlan-13d6b9f9.html"
+                }
+              },
+              {
+                "name": "Angel",
+                "cover": {
+                  "mbid": "ce58d854-7430-4231-aa44-97f0144b3372",
+                  "name": "Sarah McLachlan",
+                  "sortName": "McLachlan, Sarah",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/sarah-mclachlan-13d6b9f9.html"
+                },
+                "info": "Dedicated to Dolly Parton",
+                "with": {
+                  "mbid": "ce58d854-7430-4231-aa44-97f0144b3372",
+                  "name": "Sarah McLachlan",
+                  "sortName": "McLachlan, Sarah",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/sarah-mclachlan-13d6b9f9.html"
+                }
+              },
+              {
+                "name": "honeybee",
+                "info": "performed with piano"
+              },
+              {
+                "name": "drivers license",
+                "info": "performed with piano"
+              },
+              {
+                "name": "the cure"
+              },
+              {
+                "name": "Ironic",
+                "cover": {
+                  "mbid": "4bdcee62-4902-4773-8cd1-e252e2e31225",
+                  "name": "Alanis Morissette",
+                  "sortName": "Morissette, Alanis",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/alanis-morissette-13d6b961.html"
+                },
+                "with": {
+                  "mbid": "4bdcee62-4902-4773-8cd1-e252e2e31225",
+                  "name": "Alanis Morissette",
+                  "sortName": "Morissette, Alanis",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/alanis-morissette-13d6b961.html"
+                }
+              },
+              {
+                "name": "expectations",
+                "info": "extended outro"
+              },
+              {
+                "name": "all-american bitch"
+              },
+              {
+                "name": "deja vu",
+                "info": "extended outro"
+              },
+              {
+                "name": "Landslide",
+                "cover": {
+                  "mbid": "bd13909f-1c29-4c27-a874-d4aaf27c5b1a",
+                  "name": "Fleetwood Mac",
+                  "sortName": "Fleetwood Mac",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/fleetwood-mac-7bd6bef0.html"
+                },
+                "with": {
+                  "mbid": "b7f2cca2-72c6-41fb-ae33-53370fc62fe7",
+                  "name": "Stevie Nicks",
+                  "sortName": "Nicks, Stevie",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/stevie-nicks-5bd6d740.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Morrisette was a surprise replacement for Karen O of the Yeah Yeah Yeahs. Melinda French Gates appeared during the set to announce a large donation to the non-profits supported by the festival.",
+      "url": "https://www.setlist.fm/setlist/olivia-rodrigo/2026/dandelion-stage-irvine-ca-6372caa7.html"
+    },
+    {
+      "id": "7b70624c",
+      "versionId": "g53030f45",
+      "eventDate": "06-08-2026",
+      "lastUpdated": "2026-08-07T11:51:31.979+0000",
+      "artist": {
+        "mbid": "6925db17-f35e-42f3-a4eb-84ee6bf5d4b0",
+        "name": "Olivia Rodrigo",
+        "sortName": "Rodrigo, Olivia",
+        "disambiguation": "US singer‐songwriter",
+        "url": "https://www.setlist.fm/setlists/olivia-rodrigo-bc9194e.html"
+      },
+      "venue": {
+        "id": "73d6c22d",
+        "name": "Warsaw",
+        "city": {
+          "id": "5110302",
+          "name": "Brooklyn",
+          "state": "New York",
+          "stateCode": "NY",
+          "coords": {
+            "lat": 40.65,
+            "long": -73.95
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/warsaw-brooklyn-ny-usa-73d6c22d.html"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "drop dead"
+              },
+              {
+                "name": "u + me = <3"
+              },
+              {
+                "name": "stupid song"
+              },
+              {
+                "name": "my way"
+              },
+              {
+                "name": "bad idea right?"
+              },
+              {
+                "name": "honeybee"
+              },
+              {
+                "name": "drivers license"
+              },
+              {
+                "name": "making the bed"
+              },
+              {
+                "name": "maggots for brains"
+              },
+              {
+                "name": "all-american bitch"
+              },
+              {
+                "name": "good 4 u"
+              },
+              {
+                "name": "the cure"
+              },
+              {
+                "name": "less"
+              },
+              {
+                "name": "expectations"
+              },
+              {
+                "name": "deja vu"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "\"One Night Only: Live at Warsaw\" pop-up show.",
+      "url": "https://www.setlist.fm/setlist/olivia-rodrigo/2026/warsaw-brooklyn-ny-7b70624c.html"
+    },
+    {
+      "id": "7b73328c",
+      "versionId": "g1b0e4538",
+      "eventDate": "29-07-2026",
+      "lastUpdated": "2026-08-30T16:26:40.821+0000",
+      "artist": {
+        "mbid": "6925db17-f35e-42f3-a4eb-84ee6bf5d4b0",
+        "name": "Olivia Rodrigo",
+        "sortName": "Rodrigo, Olivia",
+        "disambiguation": "US singer‐songwriter",
+        "url": "https://www.setlist.fm/setlists/olivia-rodrigo-bc9194e.html"
+      },
+      "venue": {
+        "id": "73d2e689",
+        "name": "ACL Live at The Moody Theater",
+        "city": {
+          "id": "4671654",
+          "name": "Austin",
+          "state": "Texas",
+          "stateCode": "TX",
+          "coords": {
+            "lat": 30.267153,
+            "long": -97.7430608
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/acl-live-at-the-moody-theater-austin-tx-usa-73d2e689.html"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "my way",
+                "info": "Live debut"
+              },
+              {
+                "name": "drop dead"
+              },
+              {
+                "name": "u + me = <3",
+                "info": "Live debut"
+              },
+              {
+                "name": "stupid song"
+              },
+              {
+                "name": "bad idea right?"
+              },
+              {
+                "name": "maggots for brains",
+                "info": "Live debut"
+              },
+              {
+                "name": "begged"
+              },
+              {
+                "name": "purple",
+                "info": "Live debut"
+              },
+              {
+                "name": "vampire"
+              },
+              {
+                "name": "less",
+                "info": "Live debut"
+              },
+              {
+                "name": "honeybee",
+                "info": "Live debut"
+              },
+              {
+                "name": "drivers license"
+              },
+              {
+                "name": "the cure"
+              },
+              {
+                "name": "cigarette smoke",
+                "info": "Live debut"
+              },
+              {
+                "name": "expectations",
+                "info": "Live debut"
+              },
+              {
+                "name": "deja vu"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "my way"
+              },
+              {
+                "name": "the cure"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/olivia-rodrigo/2026/acl-live-at-the-moody-theater-austin-tx-7b73328c.html"
+    },
+    {
+      "id": "b754d4e",
+      "versionId": "g30e310f",
+      "eventDate": "11-06-2026",
+      "lastUpdated": "2026-08-27T18:16:07.165+0000",
+      "artist": {
+        "mbid": "6925db17-f35e-42f3-a4eb-84ee6bf5d4b0",
+        "name": "Olivia Rodrigo",
+        "sortName": "Rodrigo, Olivia",
+        "disambiguation": "US singer‐songwriter",
+        "url": "https://www.setlist.fm/setlists/olivia-rodrigo-bc9194e.html"
+      },
+      "venue": {
+        "id": "4bd7c3d6",
+        "name": "Jimmy Kimmel Live",
+        "city": {
+          "id": "5368361",
+          "name": "Los Angeles",
+          "state": "California",
+          "stateCode": "CA",
+          "coords": {
+            "lat": 34.052,
+            "long": -118.244
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/jimmy-kimmel-live-los-angeles-ca-usa-4bd7c3d6.html"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "stupid song",
+                "info": "live debut"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/olivia-rodrigo/2026/jimmy-kimmel-live-los-angeles-ca-b754d4e.html"
+    },
+    {
+      "id": "2375588f",
+      "versionId": "g63183aab",
+      "eventDate": "10-06-2026",
+      "lastUpdated": "2026-06-14T23:00:47.474+0000",
+      "artist": {
+        "mbid": "6925db17-f35e-42f3-a4eb-84ee6bf5d4b0",
+        "name": "Olivia Rodrigo",
+        "sortName": "Rodrigo, Olivia",
+        "disambiguation": "US singer‐songwriter",
+        "url": "https://www.setlist.fm/setlists/olivia-rodrigo-bc9194e.html"
+      },
+      "venue": {
+        "id": "4bd7c3d6",
+        "name": "Jimmy Kimmel Live",
+        "city": {
+          "id": "5368361",
+          "name": "Los Angeles",
+          "state": "California",
+          "stateCode": "CA",
+          "coords": {
+            "lat": 34.052,
+            "long": -118.244
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/jimmy-kimmel-live-los-angeles-ca-usa-4bd7c3d6.html"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "the cure"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Perfomed stupid song tomorrow's",
+      "url": "https://www.setlist.fm/setlist/olivia-rodrigo/2026/jimmy-kimmel-live-los-angeles-ca-2375588f.html"
+    },
+    {
+      "id": "53750f15",
+      "versionId": "g131b21bd",
+      "eventDate": "06-06-2026",
+      "lastUpdated": "2026-06-07T10:02:43.076+0000",
+      "artist": {
+        "mbid": "6925db17-f35e-42f3-a4eb-84ee6bf5d4b0",
+        "name": "Olivia Rodrigo",
+        "sortName": "Rodrigo, Olivia",
+        "disambiguation": "US singer‐songwriter",
+        "url": "https://www.setlist.fm/setlists/olivia-rodrigo-bc9194e.html"
+      },
+      "venue": {
+        "id": "53dff335",
+        "name": "Occident",
+        "city": {
+          "id": "3128760",
+          "name": "Barcelona",
+          "state": "Catalonia",
+          "stateCode": "56",
+          "coords": {
+            "lat": 41.3887868890716,
+            "long": 2.15898513793945
+          },
+          "country": {
+            "code": "ES",
+            "name": "Spain"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/occident-barcelona-spain-53dff335.html"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "bad idea right?"
+              },
+              {
+                "name": "ballad of a homeschooled girl"
+              },
+              {
+                "name": "vampire"
+              },
+              {
+                "name": "drop dead"
+              },
+              {
+                "name": "drivers license"
+              },
+              {
+                "name": "traitor"
+              },
+              {
+                "name": "the cure"
+              },
+              {
+                "name": "what's wrong with me",
+                "info": "world premiere; new song",
+                "with": {
+                  "mbid": "7d1a1624-784b-4f89-8ff9-b9b493cd059d",
+                  "name": "Robert Smith",
+                  "sortName": "Smith, Robert",
+                  "disambiguation": "UK guitarist, vocalist and songwriter for The Cure",
+                  "url": "https://www.setlist.fm/setlists/robert-smith-63d6b23b.html"
+                }
+              },
+              {
+                "name": "deja vu"
+              },
+              {
+                "name": "all-american bitch"
+              },
+              {
+                "name": "good 4 u",
+                "info": "extended bridge"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "\"Surprise\" set announced 5 hours earlier.",
+      "url": "https://www.setlist.fm/setlist/olivia-rodrigo/2026/occident-barcelona-spain-53750f15.html"
+    },
+    {
+      "id": "33758401",
+      "versionId": "g4b1bdfe6",
+      "eventDate": "02-06-2026",
+      "lastUpdated": "2026-06-05T18:59:51.229+0000",
+      "artist": {
+        "mbid": "6925db17-f35e-42f3-a4eb-84ee6bf5d4b0",
+        "name": "Olivia Rodrigo",
+        "sortName": "Rodrigo, Olivia",
+        "disambiguation": "US singer‐songwriter",
+        "url": "https://www.setlist.fm/setlists/olivia-rodrigo-bc9194e.html"
+      },
+      "venue": {
+        "id": "2bd460a2",
+        "name": "BBC Radio 1's Live Lounge",
+        "city": {
+          "id": "2643743",
+          "name": "London",
+          "state": "England",
+          "stateCode": "ENG",
+          "coords": {
+            "lat": 51.5084152563931,
+            "long": -0.125532746315002
+          },
+          "country": {
+            "code": "GB",
+            "name": "United Kingdom"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/bbc-radio-1s-live-lounge-london-england-2bd460a2.html"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "the cure",
+                "info": "live debut"
+              },
+              {
+                "name": "When a Good Man Cries",
+                "cover": {
+                  "mbid": "2ac533ad-f3ec-4083-a2d4-6f30393414b3",
+                  "name": "CMAT",
+                  "sortName": "CMAT",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/cmat-4bf357b6.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Broadcast date",
+      "url": "https://www.setlist.fm/setlist/olivia-rodrigo/2026/bbc-radio-1s-live-lounge-london-england-33758401.html"
+    },
+    {
+      "id": "7374e2d9",
+      "versionId": "g731cda55",
+      "eventDate": "12-05-2026",
+      "lastUpdated": "2026-05-13T16:59:25.593+0000",
+      "artist": {
+        "mbid": "6925db17-f35e-42f3-a4eb-84ee6bf5d4b0",
+        "name": "Olivia Rodrigo",
+        "sortName": "Rodrigo, Olivia",
+        "disambiguation": "US singer‐songwriter",
+        "url": "https://www.setlist.fm/setlists/olivia-rodrigo-bc9194e.html"
+      },
+      "venue": {
+        "id": "3bd3404c",
+        "name": "Jacob K. Javits Convention Center",
+        "city": {
+          "id": "5128581",
+          "name": "New York",
+          "state": "New York",
+          "stateCode": "NY",
+          "coords": {
+            "lat": 40.7142691,
+            "long": -74.0059729
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/jacob-k-javits-convention-center-new-york-ny-usa-3bd3404c.html"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "drop dead"
+              },
+              {
+                "name": "good 4 u"
+              },
+              {
+                "name": "get him back!",
+                "info": "Jimmy Kimmel's daughter, Jane, was brought up to sing the last chorus"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Disney Upfront 2026",
+      "url": "https://www.setlist.fm/setlist/olivia-rodrigo/2026/jacob-k-javits-convention-center-new-york-ny-7374e2d9.html"
+    },
+    {
+      "id": "7b777ebc",
+      "versionId": "g131f7125",
+      "eventDate": "08-05-2026",
+      "lastUpdated": "2026-05-09T02:58:34.149+0000",
+      "artist": {
+        "mbid": "6925db17-f35e-42f3-a4eb-84ee6bf5d4b0",
+        "name": "Olivia Rodrigo",
+        "sortName": "Rodrigo, Olivia",
+        "disambiguation": "US singer‐songwriter",
+        "url": "https://www.setlist.fm/setlists/olivia-rodrigo-bc9194e.html"
+      },
+      "venue": {
+        "id": "5bd653b8",
+        "name": "Teatre Grec",
+        "city": {
+          "id": "3128760",
+          "name": "Barcelona",
+          "state": "Catalonia",
+          "stateCode": "56",
+          "coords": {
+            "lat": 41.3887868890716,
+            "long": 2.15898513793945
+          },
+          "country": {
+            "code": "ES",
+            "name": "Spain"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/teatre-grec-barcelona-spain-5bd653b8.html"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "bad idea right?"
+              },
+              {
+                "name": "ballad of a homeschooled girl"
+              },
+              {
+                "name": "vampire"
+              },
+              {
+                "name": "drop dead"
+              },
+              {
+                "name": "drivers license"
+              },
+              {
+                "name": "traitor"
+              },
+              {
+                "name": "jealousy, jealousy"
+              },
+              {
+                "name": "happier"
+              },
+              {
+                "name": "lacy"
+              },
+              {
+                "name": "favorite crime"
+              },
+              {
+                "name": "deja vu"
+              },
+              {
+                "name": "brutal"
+              },
+              {
+                "name": "good 4 u"
+              },
+              {
+                "name": "get him back!"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Spotify Billions Club Perfomance.",
+      "url": "https://www.setlist.fm/setlist/olivia-rodrigo/2026/teatre-grec-barcelona-spain-7b777ebc.html"
+    },
+    {
+      "id": "53763719",
+      "versionId": "g7b1f4604",
+      "eventDate": "02-05-2026",
+      "lastUpdated": "2026-05-10T19:18:58.626+0000",
+      "artist": {
+        "mbid": "6925db17-f35e-42f3-a4eb-84ee6bf5d4b0",
+        "name": "Olivia Rodrigo",
+        "sortName": "Rodrigo, Olivia",
+        "disambiguation": "US singer‐songwriter",
+        "url": "https://www.setlist.fm/setlists/olivia-rodrigo-bc9194e.html"
+      },
+      "venue": {
+        "id": "bd6c9f6",
+        "name": "Saturday Night Live",
+        "city": {
+          "id": "5128581",
+          "name": "New York",
+          "state": "New York",
+          "stateCode": "NY",
+          "coords": {
+            "lat": 40.7142691,
+            "long": -74.0059729
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/saturday-night-live-new-york-ny-usa-bd6c9f6.html"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "drivers license",
+                "info": "parody lyrics during the opening monologue"
+              },
+              {
+                "name": "drop dead",
+                "info": "introduced by Debbie Harry"
+              },
+              {
+                "name": "begged",
+                "info": "new song; introduced by Connor Storrie",
+                "with": {
+                  "mbid": "469d6414-1f06-43de-80d5-17762d4a356a",
+                  "name": "Weyes Blood",
+                  "sortName": "Weyes Blood",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/weyes-blood-bd99542.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Live broadcast, second set of the day. Host & musical guest.",
+      "url": "https://www.setlist.fm/setlist/olivia-rodrigo/2026/saturday-night-live-new-york-ny-53763719.html"
+    },
+    {
+      "id": "4b76371a",
+      "versionId": "g331ffc05",
+      "eventDate": "02-05-2026",
+      "lastUpdated": "2026-05-04T21:35:55.021+0000",
+      "artist": {
+        "mbid": "6925db17-f35e-42f3-a4eb-84ee6bf5d4b0",
+        "name": "Olivia Rodrigo",
+        "sortName": "Rodrigo, Olivia",
+        "disambiguation": "US singer‐songwriter",
+        "url": "https://www.setlist.fm/setlists/olivia-rodrigo-bc9194e.html"
+      },
+      "venue": {
+        "id": "bd6c9f6",
+        "name": "Saturday Night Live",
+        "city": {
+          "id": "5128581",
+          "name": "New York",
+          "state": "New York",
+          "stateCode": "NY",
+          "coords": {
+            "lat": 40.7142691,
+            "long": -74.0059729
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/saturday-night-live-new-york-ny-usa-bd6c9f6.html"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "drivers license",
+                "info": "parody lyrics during the opening monologue"
+              },
+              {
+                "name": "drop dead"
+              },
+              {
+                "name": "begged",
+                "info": "new song",
+                "with": {
+                  "mbid": "469d6414-1f06-43de-80d5-17762d4a356a",
+                  "name": "Weyes Blood",
+                  "sortName": "Weyes Blood",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/weyes-blood-bd99542.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Live 8 pm \"dress rehearsal\" in front of ticketed audience; first set of the day. Host & musical guest.",
+      "url": "https://www.setlist.fm/setlist/olivia-rodrigo/2026/saturday-night-live-new-york-ny-4b76371a.html"
+    },
+    {
+      "id": "7b773a20",
+      "versionId": "g7b1e9a88",
+      "eventDate": "27-04-2026",
+      "lastUpdated": "2026-04-27T13:40:15.019+0000",
+      "artist": {
+        "mbid": "6925db17-f35e-42f3-a4eb-84ee6bf5d4b0",
+        "name": "Olivia Rodrigo",
+        "sortName": "Rodrigo, Olivia",
+        "disambiguation": "US singer‐songwriter",
+        "url": "https://www.setlist.fm/setlists/olivia-rodrigo-bc9194e.html"
+      },
+      "venue": {
+        "id": "43d49327",
+        "name": "Pete's Candy Store",
+        "city": {
+          "id": "5110302",
+          "name": "Brooklyn",
+          "state": "New York",
+          "stateCode": "NY",
+          "coords": {
+            "lat": 40.65,
+            "long": -73.95
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/petes-candy-store-brooklyn-ny-usa-43d49327.html"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "drop dead",
+                "info": "acoustic"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Surprise appearence at an open mic night.",
+      "url": "https://www.setlist.fm/setlist/olivia-rodrigo/2026/petes-candy-store-brooklyn-ny-7b773a20.html"
+    },
+    {
+      "id": "4377d3ff",
+      "versionId": "g1b0fbd24",
+      "eventDate": "24-04-2026",
+      "lastUpdated": "2026-08-30T20:14:48.083+0000",
+      "artist": {
+        "mbid": "6925db17-f35e-42f3-a4eb-84ee6bf5d4b0",
+        "name": "Olivia Rodrigo",
+        "sortName": "Rodrigo, Olivia",
+        "disambiguation": "US singer‐songwriter",
+        "url": "https://www.setlist.fm/setlists/olivia-rodrigo-bc9194e.html"
+      },
+      "venue": {
+        "id": "73d6ca21",
+        "name": "The Echo",
+        "city": {
+          "id": "5368361",
+          "name": "Los Angeles",
+          "state": "California",
+          "stateCode": "CA",
+          "coords": {
+            "lat": 34.052,
+            "long": -118.244
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/the-echo-los-angeles-ca-usa-73d6ca21.html"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "drop dead"
+              },
+              {
+                "name": "begged",
+                "info": "new song; live debut",
+                "with": {
+                  "mbid": "469d6414-1f06-43de-80d5-17762d4a356a",
+                  "name": "Weyes Blood",
+                  "sortName": "Weyes Blood",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/weyes-blood-bd99542.html"
+                }
+              },
+              {
+                "name": "lacy"
+              },
+              {
+                "name": "drivers license"
+              },
+              {
+                "name": "deja vu"
+              },
+              {
+                "name": "good 4 u"
+              },
+              {
+                "name": "all-american bitch"
+              },
+              {
+                "name": "ballad of a homeschooled girl"
+              },
+              {
+                "name": "vampire"
+              },
+              {
+                "name": "bad idea right?"
+              },
+              {
+                "name": "jealousy, jealousy"
+              },
+              {
+                "name": "so american"
+              },
+              {
+                "name": "drop dead",
+                "info": "reprise"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Intimate one night only show at The Echo, with a no phones policy.",
+      "url": "https://www.setlist.fm/setlist/olivia-rodrigo/2026/the-echo-los-angeles-ca-4377d3ff.html"
+    },
+    {
+      "id": "6b4eb64a",
+      "versionId": "g5365db65",
+      "eventDate": "08-11-2025",
+      "lastUpdated": "2025-11-09T02:52:36.332+0000",
+      "artist": {
+        "mbid": "6925db17-f35e-42f3-a4eb-84ee6bf5d4b0",
+        "name": "Olivia Rodrigo",
+        "sortName": "Rodrigo, Olivia",
+        "disambiguation": "US singer‐songwriter",
+        "url": "https://www.setlist.fm/setlists/olivia-rodrigo-bc9194e.html"
+      },
+      "venue": {
+        "id": "7bd1de24",
+        "name": "Peacock Theater",
+        "city": {
+          "id": "5368361",
+          "name": "Los Angeles",
+          "state": "California",
+          "stateCode": "CA",
+          "coords": {
+            "lat": 34.052,
+            "long": -118.244
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/peacock-theater-los-angeles-ca-usa-7bd1de24.html"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "We're Going to Be Friends",
+                "cover": {
+                  "mbid": "11ae9fbb-f3d7-4a47-936f-4c0a04d3b3b5",
+                  "name": "The White Stripes",
+                  "sortName": "White Stripes, The",
+                  "disambiguation": "",
+                  "url": "https://www.setlist.fm/setlists/the-white-stripes-3bd69864.html"
+                },
+                "with": {
+                  "mbid": "a670e05a-cea8-4b37-bce9-d82daf1a0fa4",
+                  "name": "Feist",
+                  "sortName": "Feist",
+                  "disambiguation": "Leslie Feist – American‐Canadian indie pop singer / of Broken Social Scene",
+                  "url": "https://www.setlist.fm/setlists/feist-2bd6a496.html"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Honouring The White Stripes, inducted by Iggy Pop.",
+      "url": "https://www.setlist.fm/setlist/olivia-rodrigo/2025/peacock-theater-los-angeles-ca-6b4eb64a.html"
+    },
+    {
+      "id": "534e0b19",
+      "versionId": "g2b67483e",
+      "eventDate": "23-10-2025",
+      "lastUpdated": "2025-10-29T06:19:37.442+0000",
+      "artist": {
+        "mbid": "6925db17-f35e-42f3-a4eb-84ee6bf5d4b0",
+        "name": "Olivia Rodrigo",
+        "sortName": "Rodrigo, Olivia",
+        "disambiguation": "US singer‐songwriter",
+        "url": "https://www.setlist.fm/setlists/olivia-rodrigo-bc9194e.html"
+      },
+      "venue": {
+        "id": "2bd7b022",
+        "name": "Park Avenue Armory",
+        "city": {
+          "id": "5128581",
+          "name": "New York",
+          "state": "New York",
+          "stateCode": "NY",
+          "coords": {
+            "lat": 40.7142691,
+            "long": -74.0059729
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/park-avenue-armory-new-york-ny-usa-2bd7b022.html"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "bad idea right?"
+              },
+              {
+                "name": "ballad of a homeschooled girl"
+              },
+              {
+                "name": "vampire"
+              },
+              {
+                "name": "lacy"
+              },
+              {
+                "name": "pretty isn't pretty"
+              },
+              {
+                "name": "drivers license",
+                "info": "Solo on piano"
+              },
+              {
+                "name": "traitor",
+                "info": "Solo on piano"
+              },
+              {
+                "name": "so american"
+              },
+              {
+                "name": "all-american bitch"
+              },
+              {
+                "name": "favorite crime"
+              },
+              {
+                "name": "deja vu"
+              },
+              {
+                "name": "good 4 u",
+                "info": "Acoustic"
+              },
+              {
+                "name": "get him back!",
+                "info": "Clear version"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/olivia-rodrigo/2025/park-avenue-armory-new-york-ny-534e0b19.html"
+    },
+    {
+      "id": "2b5b90b2",
+      "versionId": "g637f16fb",
+      "eventDate": "03-08-2025",
+      "lastUpdated": "2025-08-24T22:34:17.126+0000",
+      "artist": {
+        "mbid": "6925db17-f35e-42f3-a4eb-84ee6bf5d4b0",
+        "name": "Olivia Rodrigo",
+        "sortName": "Rodrigo, Olivia",
+        "disambiguation": "US singer‐songwriter",
+        "url": "https://www.setlist.fm/setlists/olivia-rodrigo-bc9194e.html"
+      },
+      "venue": {
+        "id": "53d62765",
+        "name": "Parc Jean-Drapeau",
+        "city": {
+          "id": "6077243",
+          "name": "Montreal",
+          "state": "Quebec",
+          "stateCode": "QC",
+          "coords": {
+            "lat": 45.5088375,
+            "long": -73.587809
+          },
+          "country": {
+            "code": "CA",
+            "name": "Canada"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/parc-jean-drapeau-montreal-qc-canada-53d62765.html"
+      },
+      "tour": {
+        "name": "GUTS World Tour: Spilled"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "We Got the Beat",
+                "tape": true,
+                "cover": {
+                  "mbid": "eec163e4-a013-4af0-9641-c5b2df41fff7",
+                  "name": "Go‐Go’s",
+                  "sortName": "Go‐Go’s",
+                  "disambiguation": "all-female American rock band formed in 1978",
+                  "url": "https://www.setlist.fm/setlists/gogos-13d6b53d.html"
+                }
+              },
+              {
+                "name": "obsessed"
+              },
+              {
+                "name": "ballad of a homeschooled girl"
+              },
+              {
+                "name": "vampire"
+              },
+              {
+                "name": "drivers license"
+              },
+              {
+                "name": "traitor"
+              },
+              {
+                "name": "bad idea right?"
+              },
+              {
+                "name": "love is embarrassing"
+              },
+              {
+                "name": "pretty isn't pretty"
+              },
+              {
+                "name": "happier"
+              },
+              {
+                "name": "All I Want"
+              },
+              {
+                "name": "enough for you"
+              },
+              {
+                "name": "so american"
+              },
+              {
+                "name": "jealousy, jealousy"
+              },
+              {
+                "name": "lacy"
+              },
+              {
+                "name": "deja vu"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "brutal"
+              },
+              {
+                "name": "all-american bitch"
+              },
+              {
+                "name": "good 4 u"
+              },
+              {
+                "name": "get him back!"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "Last show of the GUTS world tour",
+      "url": "https://www.setlist.fm/setlist/olivia-rodrigo/2025/parc-jean-drapeau-montreal-qc-canada-2b5b90b2.html"
+    },
+    {
+      "id": "3358c805",
+      "versionId": "g7304cad1",
+      "eventDate": "01-08-2025",
+      "lastUpdated": "2026-07-15T14:00:43.309+0000",
+      "artist": {
+        "mbid": "6925db17-f35e-42f3-a4eb-84ee6bf5d4b0",
+        "name": "Olivia Rodrigo",
+        "sortName": "Rodrigo, Olivia",
+        "disambiguation": "US singer‐songwriter",
+        "url": "https://www.setlist.fm/setlists/olivia-rodrigo-bc9194e.html"
+      },
+      "venue": {
+        "id": "73df9a79",
+        "name": "T-Mobile Stage",
+        "city": {
+          "id": "4887398",
+          "name": "Chicago",
+          "state": "Illinois",
+          "stateCode": "IL",
+          "coords": {
+            "lat": 41.850033,
+            "long": -87.6500523
+          },
+          "country": {
+            "code": "US",
+            "name": "United States"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/t-mobile-stage-chicago-il-usa-73df9a79.html"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "We Got the Beat",
+                "tape": true,
+                "cover": {
+                  "mbid": "eec163e4-a013-4af0-9641-c5b2df41fff7",
+                  "name": "Go‐Go’s",
+                  "sortName": "Go‐Go’s",
+                  "disambiguation": "all-female American rock band formed in 1978",
+                  "url": "https://www.setlist.fm/setlists/gogos-13d6b53d.html"
+                }
+              },
+              {
+                "name": "obsessed"
+              },
+              {
+                "name": "ballad of a homeschooled girl"
+              },
+              {
+                "name": "vampire"
+              },
+              {
+                "name": "drivers license"
+              },
+              {
+                "name": "traitor"
+              },
+              {
+                "name": "bad idea right?",
+                "info": "extended outro"
+              },
+              {
+                "name": "love is embarrassing"
+              },
+              {
+                "name": "pretty isn't pretty"
+              },
+              {
+                "name": "happier"
+              },
+              {
+                "name": "enough for you"
+              },
+              {
+                "name": "Buddy Holly",
+                "cover": {
+                  "mbid": "6fe07aa5-fec0-4eca-a456-f29bff451b04",
+                  "name": "Weezer",
+                  "sortName": "Weezer",
+                  "disambiguation": "American rock band",
+                  "url": "https://www.setlist.fm/setlists/weezer-33d6a4f9.html"
+                },
+                "info": "Joined onstage by Weezer's Rivers Cuomo, Brian Bell and Scott Shriner.",
+                "with": {
+                  "mbid": "6fe07aa5-fec0-4eca-a456-f29bff451b04",
+                  "name": "Weezer",
+                  "sortName": "Weezer",
+                  "disambiguation": "American rock band",
+                  "url": "https://www.setlist.fm/setlists/weezer-33d6a4f9.html"
+                }
+              },
+              {
+                "name": "Say It Ain't So",
+                "cover": {
+                  "mbid": "6fe07aa5-fec0-4eca-a456-f29bff451b04",
+                  "name": "Weezer",
+                  "sortName": "Weezer",
+                  "disambiguation": "American rock band",
+                  "url": "https://www.setlist.fm/setlists/weezer-33d6a4f9.html"
+                },
+                "info": "Joined onstage by Weezer's Rivers Cuomo, Brian Bell and Scott Shriner.",
+                "with": {
+                  "mbid": "6fe07aa5-fec0-4eca-a456-f29bff451b04",
+                  "name": "Weezer",
+                  "sortName": "Weezer",
+                  "disambiguation": "American rock band",
+                  "url": "https://www.setlist.fm/setlists/weezer-33d6a4f9.html"
+                }
+              },
+              {
+                "name": "so american"
+              },
+              {
+                "name": "jealousy, jealousy",
+                "info": "preceded by band introductions and instrumental solos"
+              },
+              {
+                "name": "lacy"
+              },
+              {
+                "name": "deja vu"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "Ring of Fire",
+                "tape": true,
+                "info": "Video interlude"
+              },
+              {
+                "name": "brutal"
+              },
+              {
+                "name": "all-american bitch",
+                "info": "Extended outro"
+              },
+              {
+                "name": "good 4 u"
+              },
+              {
+                "name": "get him back!",
+                "info": "Extended outro"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/olivia-rodrigo/2025/t-mobile-stage-chicago-il-3358c805.html"
+    },
+    {
+      "id": "2b5e8cd2",
+      "versionId": "g4360e7af",
+      "eventDate": "18-07-2025",
+      "lastUpdated": "2025-12-01T08:44:51.001+0000",
+      "artist": {
+        "mbid": "6925db17-f35e-42f3-a4eb-84ee6bf5d4b0",
+        "name": "Olivia Rodrigo",
+        "sortName": "Rodrigo, Olivia",
+        "disambiguation": "US singer‐songwriter",
+        "url": "https://www.setlist.fm/setlists/olivia-rodrigo-bc9194e.html"
+      },
+      "venue": {
+        "id": "33d6c4d9",
+        "name": "Hippodrome de Longchamp",
+        "city": {
+          "id": "2988507",
+          "name": "Paris",
+          "state": "Île-de-France",
+          "stateCode": "11",
+          "coords": {
+            "lat": 48.853,
+            "long": 2.349
+          },
+          "country": {
+            "code": "FR",
+            "name": "France"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/hippodrome-de-longchamp-paris-france-33d6c4d9.html"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "obsessed"
+              },
+              {
+                "name": "ballad of a homeschooled girl"
+              },
+              {
+                "name": "vampire"
+              },
+              {
+                "name": "drivers license",
+                "info": "On piano"
+              },
+              {
+                "name": "traitor",
+                "info": "On piano"
+              },
+              {
+                "name": "bad idea right?"
+              },
+              {
+                "name": "love is embarrassing"
+              },
+              {
+                "name": "pretty isn't pretty",
+                "info": "On guitar"
+              },
+              {
+                "name": "happier"
+              },
+              {
+                "name": "lacy"
+              },
+              {
+                "name": "enough for you",
+                "info": "On guitar"
+              },
+              {
+                "name": "so american",
+                "info": "On guitar"
+              },
+              {
+                "name": "jealousy, jealousy",
+                "info": "Barricade walk"
+              },
+              {
+                "name": "favorite crime"
+              },
+              {
+                "name": "deja vu"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "brutal"
+              },
+              {
+                "name": "all-american bitch"
+              },
+              {
+                "name": "good 4 u"
+              },
+              {
+                "name": "get him back!"
+              }
+            ]
+          }
+        ]
+      },
+      "info": "",
+      "url": "https://www.setlist.fm/setlist/olivia-rodrigo/2025/hippodrome-de-longchamp-paris-france-2b5e8cd2.html"
+    },
+    {
+      "id": "435e8f0f",
+      "versionId": "g2b72c092",
+      "eventDate": "15-07-2025",
+      "lastUpdated": "2025-07-16T06:58:15.560+0000",
+      "artist": {
+        "mbid": "6925db17-f35e-42f3-a4eb-84ee6bf5d4b0",
+        "name": "Olivia Rodrigo",
+        "sortName": "Rodrigo, Olivia",
+        "disambiguation": "US singer‐songwriter",
+        "url": "https://www.setlist.fm/setlists/olivia-rodrigo-bc9194e.html"
+      },
+      "venue": {
+        "id": "23d46ca3",
+        "name": "Ippodromo del Galoppo di San Siro",
+        "city": {
+          "id": "3173435",
+          "name": "Milan",
+          "state": "Lombardy",
+          "stateCode": "09",
+          "coords": {
+            "lat": 45.4642693810258,
+            "long": 9.1895055770874
+          },
+          "country": {
+            "code": "IT",
+            "name": "Italy"
+          }
+        },
+        "url": "https://www.setlist.fm/venue/ippodromo-del-galoppo-di-san-siro-milan-italy-23d46ca3.html"
+      },
+      "sets": {
+        "set": [
+          {
+            "song": [
+              {
+                "name": "We Got the Beat",
+                "tape": true,
+                "cover": {
+                  "mbid": "eec163e4-a013-4af0-9641-c5b2df41fff7",
+                  "name": "Go‐Go’s",
+                  "sortName": "Go‐Go’s",
+                  "disambiguation": "all-female American rock band formed in 1978",
+                  "url": "https://www.setlist.fm/setlists/gogos-13d6b53d.html"
+                }
+              },
+              {
+                "name": "GUTS: Spilled!",
+                "tape": true,
+                "info": "Video intro"
+              },
+              {
+                "name": "obsessed"
+              },
+              {
+                "name": "ballad of a homeschooled girl"
+              },
+              {
+                "name": "vampire"
+              },
+              {
+                "name": "drivers license",
+                "info": "chat intro; on piano"
+              },
+              {
+                "name": "traitor",
+                "info": "on piano"
+              },
+              {
+                "name": "bad idea right?",
+                "info": "extended guitar solo"
+              },
+              {
+                "name": "love is embarrassing"
+              },
+              {
+                "name": "pretty isn't pretty",
+                "info": "on guitar"
+              },
+              {
+                "name": "happier"
+              },
+              {
+                "name": "All I Want"
+              },
+              {
+                "name": "enough for you",
+                "info": "with fan action"
+              },
+              {
+                "name": "so american",
+                "info": "on guitar"
+              },
+              {
+                "name": "jealousy, jealousy"
+              },
+              {
+                "name": "favorite crime"
+              },
+              {
+                "name": "deja vu"
+              }
+            ]
+          },
+          {
+            "encore": 1,
+            "song": [
+              {
+                "name": "brutal"
+              },
+              {
+                "name": "all-american bitch"
+              },
+              {
+                "name": "good 4 u"
+              },
+              {
+                "name": "get him back!"
+              }
+            ]
+          },
+          {
+            "encore": 2,
+            "song": [
+              {
+                "name": "lacy",
+                "info": "Second encore, by heavy request from the fans"
+              }
+            ]
+          }
+        ]
+      },
+      "url": "https://www.setlist.fm/setlist/olivia-rodrigo/2025/ippodromo-del-galoppo-di-san-siro-milan-italy-435e8f0f.html"
+    }
+  ]
+}
