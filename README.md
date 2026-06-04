@@ -30,7 +30,8 @@ cp apps/worker/.dev.vars.example apps/worker/.dev.vars   # fill in SETLISTFM_API
 pnpm dev:worker
 ```
 
-Serves locally, e.g. `curl http://localhost:8787/health`.
+Serves locally, e.g. `curl http://localhost:8787/health` or
+`curl 'http://localhost:8787/aggregate?artist=Phish'`.
 
 Deploying (Phase 2+) requires a real KV namespace — run
 `wrangler kv namespace create CACHE` from `apps/worker` and paste the
@@ -63,12 +64,20 @@ overview page).
   make a documented judgment call about what "short periods" means in
   practice for a low-traffic personal project. Don't treat the Phase 1/2
   cache design in the plan as settled.
-- **Rate limits**: the published terms don't give a specific requests/sec
-  number for API keys (only a mention of not refreshing "transactional
-  pages" more than once per 3 seconds, which reads as being about the
-  website, not the API). No numeric API rate limit was found during this
-  read — re-check the developer dashboard after an API key is issued, and
-  update this section with whatever limit it actually states before Phase 2's
-  throttling work.
+- **Rate limits**: re-checked in Phase 1 with a real API key. setlist.fm's
+  responses don't carry a numeric rate-limit header (just `cache-control:
+  no-transform, max-age=60`), and the published terms still don't state a
+  requests/sec number for API keys. Went with a conservative ~1 req/sec from
+  the worker (sequential awaits, no parallel setlist.fm calls) as a working
+  assumption. Needs a real number confirmed from the developer dashboard
+  before Phase 2's throttling work claims anything more precise.
+- **MusicBrainz rate limits** (not covered by setlist.fm's terms, but the
+  worker calls both): confirmed via response headers —
+  `x-ratelimit-limit: 1200` with a rolling window, enforced per the
+  `x-ratelimit-zone`. Requests without a descriptive `User-Agent` are
+  rejected outright; a burst of unauthenticated requests in quick succession
+  during fixture-gathering returned `503 { "error": "...currently busy..." }`
+  even under the documented limit, so treat ~1 req/sec as a practical ceiling
+  regardless of what the header allows.
 - Web Store distribution itself isn't explicitly prohibited by these terms
   as long as the non-commercial condition holds.
