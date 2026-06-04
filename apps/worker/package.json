@@ -11,6 +11,7 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@setlist-scout/shared": "workspace:*",
     "hono": "^4.13.5"
   },
   "devDependencies": {

@@ -29,6 +29,9 @@ importers:
 
   apps/worker:
     dependencies:
+      '@setlist-scout/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
       hono:
         specifier: ^4.13.5
         version: 4.13.5
