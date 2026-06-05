@@ -22,3 +22,11 @@ export type ArtistAggregate =
     }
   | { status: "insufficient_data"; artistName: string; showCount: number }
   | { status: "artist_not_found"; query: string };
+
+export type EventContext = {
+  artist: string;
+  date: string | null; // ISO
+  venue: string | null;
+  city: string | null;
+  source: "jsonld" | "dom";
+};
