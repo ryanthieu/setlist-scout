@@ -1,0 +1,35 @@
+{
+  "itemListElement": [
+    {
+      "position": 1,
+      "item": { "name": "Ticketmaster", "@id": "https://www.ticketmaster.com" },
+      "@type": "ListItem"
+    },
+    {
+      "position": 2,
+      "item": {
+        "name": "Concert Tickets",
+        "@id": "https://www.ticketmaster.com/discover/concerts"
+      },
+      "@type": "ListItem"
+    },
+    {
+      "position": 3,
+      "item": {
+        "name": "Hip-Hop/Rap",
+        "@id": "https://www.ticketmaster.com/discover/concerts?classificationId=KnvZfZ7vAv1"
+      },
+      "@type": "ListItem"
+    },
+    {
+      "position": 4,
+      "item": {
+        "name": "Chance The Rapper",
+        "@id": "https://www.ticketmaster.com/chance-the-rapper-tickets/artist/1750234"
+      },
+      "@type": "ListItem"
+    }
+  ],
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList"
+}

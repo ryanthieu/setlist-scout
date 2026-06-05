@@ -1,0 +1,43 @@
+{
+  "name": "Chance The Rapper - Coloring Book 10 Year Anniversary Tour",
+  "description": "Chance The Rapper - Coloring Book 10 Year Anniversary Tour | Sun • Sep 13, 2026 • 8:00 PM | Moody Amphitheater, Austin, TX",
+  "image": "https://s1.ticketm.net/dam/a/fd0/f1e801a1-dd16-4838-b39c-8a2817e9ffd0_EVENT_DETAIL_PAGE_16_9.jpg",
+  "url": "https://www.ticketmaster.com/chance-the-rapper-coloring-book-10-austin-texas-09-13-2026/event/3A0064ABEAE92935",
+  "startDate": "2026-09-13T20:00",
+  "endDate": "2026-09-13",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "location": {
+    "name": "Moody Amphitheater",
+    "address": {
+      "streetAddress": "1401 North Trinity Street ",
+      "addressLocality": "Austin",
+      "addressRegion": "TX",
+      "postalCode": "78701",
+      "addressCountry": "US",
+      "@type": "PostalAddress"
+    },
+    "sameAs": "https://www.ticketmaster.com/moody-amphitheater-tickets-austin/venue/476251",
+    "image": "https://s1.ticketm.net/dbimages/26394v.jpg",
+    "geo": {
+      "latitude": "30.27217700",
+      "longitude": "-97.73485800",
+      "@type": "GeoCoordinates"
+    },
+    "@type": "Place"
+  },
+  "performers": [
+    {
+      "name": "Chance The Rapper",
+      "sameAs": "https://www.ticketmaster.com/chance-the-rapper-tickets/artist/1750234",
+      "@type": "MusicGroup"
+    },
+    {
+      "name": "La Reezy",
+      "sameAs": "https://www.ticketmaster.com/la-reezy-tickets/artist/3142407",
+      "@type": "MusicGroup"
+    }
+  ],
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "@context": "http://schema.org",
+  "@type": "MusicEvent"
+}

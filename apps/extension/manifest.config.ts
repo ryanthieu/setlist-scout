@@ -11,4 +11,11 @@ export default defineManifest({
     service_worker: "src/background/index.ts",
     type: "module",
   },
+  content_scripts: [
+    {
+      matches: ["https://www.ticketmaster.com/*/event/*"],
+      js: ["src/content/index.ts"],
+      run_at: "document_idle",
+    },
+  ],
 });
