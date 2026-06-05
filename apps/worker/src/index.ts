@@ -1,8 +1,7 @@
-import type { ArtistAggregate } from "@setlist-scout/shared";
 import { Hono } from "hono";
-import { aggregateSetlists } from "./aggregate";
-import { resolveArtist } from "./musicbrainz";
-import { fetchArtistSetlists } from "./setlistfm";
+import { cors } from "hono/cors";
+import { handleAggregate } from "./handle-aggregate";
+import { isRateLimited } from "./throttle";
 
 type Bindings = {
   SETLISTFM_API_KEY: string;
@@ -10,55 +9,58 @@ type Bindings = {
 };
 
 const MB_USER_AGENT = "setlist-scout/0.1 (ryanthieu1@gmail.com)";
-const AGGREGATE_WINDOW_DAYS = 180;
+
+const ALLOWED_ORIGIN_PATTERNS = [
+  /^chrome-extension:\/\//,
+  /^https?:\/\/localhost(:\d+)?$/,
+  /^https?:\/\/127\.0\.0\.1(:\d+)?$/,
+];
+
+function isAllowedOrigin(origin: string): boolean {
+  return ALLOWED_ORIGIN_PATTERNS.some((pattern) => pattern.test(origin));
+}
 
 const app = new Hono<{ Bindings: Bindings }>();
+
+app.use(
+  "/aggregate",
+  cors({
+    origin: (origin) =>
+      origin && isAllowedOrigin(origin) ? origin : undefined,
+  }),
+);
+
+app.use("/aggregate", async (c, next) => {
+  const ip =
+    c.req.header("CF-Connecting-IP") ??
+    c.req.header("x-forwarded-for") ??
+    "unknown";
+  if (await isRateLimited(c.env.CACHE, ip)) {
+    return c.json(
+      {
+        error: {
+          code: "rate_limited",
+          message: "Too many requests. Try again shortly.",
+        },
+      },
+      429,
+    );
+  }
+  await next();
+});
 
 app.get("/health", (c) => c.json({ ok: true }));
 
 app.get("/aggregate", async (c) => {
-  const artistQuery = c.req.query("artist");
-  if (!artistQuery) {
-    return c.json({ error: "missing required query param: artist" }, 400);
-  }
-
-  const resolved = await resolveArtist(artistQuery, MB_USER_AGENT);
-  if (!resolved) {
-    const body: ArtistAggregate = {
-      status: "artist_not_found",
-      query: artistQuery,
-    };
-    return c.json(body);
-  }
-
-  const oldestDate = new Date(
-    Date.now() - AGGREGATE_WINDOW_DAYS * 24 * 60 * 60 * 1000,
-  );
-  const setlists = await fetchArtistSetlists(
-    resolved.mbid,
-    c.env.SETLISTFM_API_KEY,
-    { oldestDate },
-  );
-  if (!setlists) {
-    const body: ArtistAggregate = {
-      status: "artist_not_found",
-      query: artistQuery,
-    };
-    return c.json(body);
-  }
-
-  const sourceUrl =
-    setlists[0]?.artist.url ??
-    `https://www.setlist.fm/setlists/search?query=${encodeURIComponent(resolved.name)}`;
-
-  const result = aggregateSetlists({
-    mbid: resolved.mbid,
-    artistName: resolved.name,
-    sourceUrl,
-    setlists,
+  const result = await handleAggregate({
+    artistQuery: c.req.query("artist"),
+    mbidQuery: c.req.query("mbid"),
+    kv: c.env.CACHE,
+    apiKey: c.env.SETLISTFM_API_KEY,
+    userAgent: MB_USER_AGENT,
   });
 
-  return c.json(result);
+  return c.json(result.body, result.httpStatus);
 });
 
 export default app;
