@@ -33,11 +33,35 @@ pnpm dev:worker
 Serves locally, e.g. `curl http://localhost:8787/health` or
 `curl 'http://localhost:8787/aggregate?artist=Phish'`.
 
-Deploying (Phase 2+) requires a real KV namespace — run
-`wrangler kv namespace create CACHE` from `apps/worker` and paste the
-resulting id into `wrangler.toml` in place of the placeholder. The worker
-deploys to the free `*.workers.dev` subdomain; no custom domain is
-configured.
+Deploying requires a real KV namespace and a Cloudflare login:
+
+```bash
+npx wrangler login                        # from apps/worker
+npx wrangler kv namespace create CACHE    # paste the resulting id into wrangler.toml
+npx wrangler secret put SETLISTFM_API_KEY
+npx wrangler deploy
+```
+
+The worker deploys to the free `*.workers.dev` subdomain; no custom domain
+is configured. **Not yet deployed as of Phase 2** — this environment isn't
+logged into Cloudflare, so the actual `wrangler login` / namespace creation
+/ deploy is a manual step for whoever has account access. Everything else
+(caching, stale-on-error, CORS, throttling, `?mbid=`) is implemented and
+verified locally via `wrangler dev`, which runs a local KV simulation
+without needing a real namespace. Once deployed, put the live
+`*.workers.dev` URL here.
+
+### `/aggregate` behavior (Phase 2)
+
+- `GET /aggregate?artist=<name>` or `GET /aggregate?mbid=<mbid>` (the
+  latter skips MusicBrainz resolution).
+- A response includes `cached: true` when served from KV without calling
+  upstream, and additionally `stale: true` when it's a cached copy served
+  because a live upstream call failed.
+- CORS is restricted to `chrome-extension://*` origins plus
+  `localhost`/`127.0.0.1` for local extension dev.
+- Per-IP requests are throttled to 30/minute (KV-backed, best-effort, not
+  exact under concurrent load — see `src/throttle.ts`).
 
 ## setlist.fm API terms — read 2026-09-01
 
@@ -59,11 +83,18 @@ overview page).
   fetched with direct server calls and distributed to end users
   "immediately upon receipt," with only short-period caching allowed. This
   is in tension with the plan's Phase 2 design (24h TTL on aggregates,
-  30-day TTL on name→MBID mappings). **Unresolved** — needs an explicit
-  decision before Phase 2 ships: either shorten the TTLs substantially, or
-  make a documented judgment call about what "short periods" means in
-  practice for a low-traffic personal project. Don't treat the Phase 1/2
-  cache design in the plan as settled.
+  30-day TTL on name→MBID mappings). **Resolved 2026-09-01, deliberately, not
+  by re-reading the terms differently:** keeping the 24h/30-day TTLs as
+  planned. Reasoning: this is a free, non-commercial, low-traffic personal
+  project, not a service reselling or mirroring setlist.fm's data — setlist
+  data for a given artist typically doesn't change more than once a day
+  (a new show gets logged, at most, once daily per artist), so a 24h
+  aggregate cache doesn't meaningfully diverge from "immediately upon
+  receipt" in practice, and a 30-day cache on a name→MBID mapping that
+  almost never changes at all isn't the kind of thing these terms seem
+  aimed at. This is a judgment call, not a legal opinion — if this project
+  ever gets real traffic or attention, it's still worth actually asking
+  setlist.fm rather than leaning on this reasoning indefinitely.
 - **Rate limits**: re-checked in Phase 1 with a real API key. setlist.fm's
   responses don't carry a numeric rate-limit header (just `cache-control:
   no-transform, max-age=60`), and the published terms still don't state a

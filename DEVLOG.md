@@ -1,5 +1,95 @@
 # DEVLOG
 
+## Phase 2 — Worker: caching and hardening — 2026-09-01
+
+**Shipped:** `/aggregate` is now safe to point a public extension at.
+KV-backed caching on both the mbid resolution and the aggregate itself,
+with stale-on-error fallback when either upstream is unreachable, CORS
+locked to the extension + localhost, a basic per-IP throttle, and
+`?mbid=` as a resolution-skipping alternative to `?artist=`. No live
+deploy yet -- see Known gaps.
+
+**Commits:** `4dd6a8d` feat(worker): KV caching with stale-on-error
+fallback · `3840bab` feat(worker): CORS, per-IP throttling, and mbid
+shortcut on /aggregate
+
+**Decisions:**
+- Settled the setlist.fm caching-terms tension flagged back in Phase 0/1:
+  keeping the 24h/30-day TTLs from the plan, as a documented judgment call
+  for a free non-commercial low-traffic project rather than a legal
+  reading of "short periods." Written up in the README with the actual
+  reasoning, not just "decided to keep it."
+- Combined "KV caching" and "stale-on-error" into one commit instead of
+  the two the plan sketched. In the actual implementation they're the
+  same code path -- the try/catch around each upstream call is what
+  decides both "do I have a cache hit" and "do I fall back to a stale
+  one," so there's no real intermediate state where caching exists
+  without the fallback.
+- Implemented the 24h/30-day TTLs as *logical* freshness windows checked
+  against a stored timestamp, not as KV's own `expirationTtl`. The
+  physical KV entry lives much longer (30 days for aggregates, 90 for
+  mbid mappings) than its "fresh" window, specifically so it's still
+  there to serve as a stale fallback well after it stops being served as
+  a normal cache hit. A literal `expirationTtl: 24h` would have deleted
+  the exact data the stale-on-error path needs.
+- Extracted the resolve-then-aggregate orchestration out of index.ts into
+  `handle-aggregate.ts` as a function that takes its KV, API key, and the
+  resolveArtist/fetchArtistSetlists calls themselves as parameters. This
+  follows the DI pattern the Phase 1 modules already used
+  (`fetchImpl` on `resolveArtist`/`fetchArtistSetlists`) and is what made
+  the stale-on-error and cache-freshness paths actually unit-testable --
+  tests inject a failing upstream fn and a fixed `now` past the freshness
+  window, rather than needing a real outage or a real 24 hours to pass.
+- The per-IP throttle is a plain KV read-then-write counter, explicitly
+  not atomic. Documented in `throttle.ts` and the README as "stops one
+  broken client," not a real rate limiter -- concurrent requests from the
+  same IP in the same window can race a few requests past the limit.
+  Fine for this project's actual threat model right now.
+
+**Surprises:**
+- Nothing upstream-related this phase -- Phase 2 didn't add new upstream
+  calls, just wrapped the existing Phase 1 ones in caching/fallback logic.
+- Cloudflare auth expired/wasn't configured in this environment
+  (`wrangler whoami` failed non-interactively), which was caught before
+  writing any code by checking it up front rather than discovering it at
+  the "deploy and record the URL" acceptance step.
+
+**Known gaps:**
+- **Not deployed to Cloudflare.** This environment has no Cloudflare
+  login and can't run the interactive OAuth flow. All of Phase 2's
+  behavior is implemented and verified against `wrangler dev`'s local KV
+  simulation, which works without a real namespace -- but the actual
+  `wrangler login`, `wrangler kv namespace create CACHE`,
+  `wrangler secret put SETLISTFM_API_KEY`, and `wrangler deploy` are
+  manual steps for whoever has account access. The README has the exact
+  commands. Once deployed, the KV namespace id placeholder in
+  `wrangler.toml` needs to be replaced with the real one, and the live
+  URL needs to go in the README.
+- Stale-on-error is thoroughly covered by unit tests (which inject a
+  failing fetch fn and a `now` past the freshness window) but wasn't
+  exercised against the live worker with real upstream APIs -- doing that
+  honestly would mean either waiting out a real 24 hours or temporarily
+  breaking the real API key mid-session, and I didn't want to fake a
+  verification I couldn't actually perform. Flagging this explicitly
+  rather than quietly skipping it.
+- The throttle's non-atomicity (above) is a known, accepted gap, not an
+  oversight.
+- No negative caching (a MusicBrainz "no confident match" isn't cached),
+  so a garbled artist name hits MusicBrainz fresh on every request. Not
+  in the plan's Phase 2 scope; worth revisiting if abuse ever shows up.
+
+**Verification:** `pnpm typecheck`, `pnpm lint`, `pnpm test` (37 tests,
+up from 17), and `pnpm build` all pass. Ran `pnpm dev:worker` and
+confirmed live, against real MusicBrainz/setlist.fm calls: a first
+`/aggregate?artist=Phish` request took ~1.1s and returned `cached: false`;
+a second identical request returned in ~0.02s with `cached: true`.
+`?mbid=` with Phish's real mbid returned the correct cached result without
+calling MusicBrainz. CORS: a `chrome-extension://` origin got
+`Access-Control-Allow-Origin` echoed back; a random `https://` origin got
+no CORS header at all. Firing 35 rapid requests at the same IP produced
+`200`s followed by `429`s once the per-minute limit was hit. Confirmed
+`.dev.vars` still never appears in `git status`/`git diff`.
+
 ## Phase 1 — Worker: resolve → fetch → aggregate — 2026-09-01
 
 **Shipped:** `GET /aggregate?artist=<name>` resolves a name via
