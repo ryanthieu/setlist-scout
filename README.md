@@ -23,6 +23,15 @@ pnpm --filter @setlist-scout/extension build   # writes apps/extension/dist
 Load unpacked in Chrome: `chrome://extensions` → enable Developer Mode →
 Load unpacked → select `apps/extension/dist`.
 
+**Verifying event detection (Phase 3):** open a real Ticketmaster event
+page (a URL matching `ticketmaster.com/<slug>/event/<id>`), open DevTools
+→ Console, and look for a `[setlist-scout] event detection:` log line.
+This hasn't been checked against a live page from the dev environment
+itself (see DEVLOG Phase 3 — Ticketmaster blocks automated fetches with a
+bot-detection challenge) — checking it against a handful of real pages,
+including a non-music event and a Ticketmaster page that isn't an event at
+all, is a manual step still worth doing.
+
 ### Worker
 
 ```bash

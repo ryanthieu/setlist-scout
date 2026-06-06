@@ -1,5 +1,102 @@
 # DEVLOG
 
+## Phase 3 — Extension: event detection — 2026-09-01
+
+**Shipped:** a content script that runs on Ticketmaster event pages,
+extracts `{ artist, date, venue, city }` from the page's own JSON-LD (or a
+DOM-selector fallback if that's missing), and logs it to console. No UI,
+no network calls -- just proving detection works before building anything
+on top of it.
+
+**Commits:** `ad9444d` feat(extension): site adapter interface ·
+`32bc881` feat(extension): ticketmaster event detection
+
+**Decisions:**
+- Automated fetches of Ticketmaster from this environment (both `curl`
+  and the sandboxed WebFetch tool) get a 401 behind an Akamai-style
+  "Let's Get Your Identity Verified" bot challenge -- real HTTP clients
+  without a full browser engine can't get past it. Since "don't write a
+  parser against a shape you haven't seen" is a hard rule here, I asked
+  for real page source pasted in by hand instead of guessing at the
+  schema.org spec. That turned out to matter immediately (see Surprises).
+- `EventContext` went into `packages/shared/src/types.ts` (per the
+  plan's own repo-layout comment); `SiteAdapter` stayed extension-local
+  in `src/content/adapters/site-adapter.ts` since it's a behavioral
+  contract about how content scripts work, not a cross-cutting data
+  shape the worker has any reason to know about.
+- Skipped `host_permissions` in the manifest this phase. The plan's Phase
+  3 bullet mentions adding it for the worker URL, but nothing in this
+  phase makes a network call -- that's Phase 4's background-fetch
+  bridge -- and the worker isn't deployed yet anyway (Phase 2 gap), so
+  there's no real URL to grant permission for. `content_scripts.matches`
+  alone is what Chrome needs to inject on Ticketmaster event pages.
+- The DOM fallback intentionally avoids Ticketmaster's styled-components
+  class names (things like `sc-85d93237-7`, which look deterministic but
+  are hash-generated per build and will rot fast) in favor of structural
+  signals: the page's `<h1>`, an anchor linking to `/venue/`, and a
+  regex over the visible body text for the "Day • Mon DD, YYYY • H:MM
+  AM/PM" pattern. Still brittle by nature (that's the whole reason it's
+  a fallback), just not brittle in the "breaks on the next Ticketmaster
+  deploy" way specifically.
+
+**Surprises:**
+- Real Ticketmaster JSON-LD uses `"performers"` (plural, an array) for
+  the artist list, not schema.org's documented singular `"performer"`.
+  Had I written this against the spec instead of a real fixture, artist
+  detection would have silently returned nothing on every real page.
+  The extractor now accepts both keys, singular or array-valued.
+- The fixture I got back (Chance The Rapper, with opener La Reezy) is
+  itself a genuine multi-performer bill, which happened to cover that
+  specific acceptance-criteria case with real data without needing to
+  ask for a second one.
+- The JSON-LD script tags sit in the page markup right after a large
+  `<noscript>` fallback block, which briefly looked (from a naive read
+  of the raw HTML) like the JSON-LD itself might be nested inside
+  `<noscript>` -- which would make it invisible to a content script
+  running with JS enabled. It isn't; the `<script>` tags are siblings
+  after `</noscript>` closes, not children of it. Worth having actually
+  checked rather than assumed either way.
+
+**Known gaps:**
+- **The plan's actual acceptance criteria -- 5 real Ticketmaster event
+  pages including a multi-artist bill and a non-music event, verified
+  live -- have not been run.** I have one real fixture (a multi-artist
+  hip-hop bill) exercised end-to-end through the real adapter code via
+  jsdom, plus synthetic-but-realistic cases for a non-music event's
+  JSON-LD and a non-event page. That's real coverage of the parsing
+  logic, but it is not the same as loading the unpacked extension in
+  Chrome and confirming detection against 5 different genuinely live
+  pages, which needs a real browser I don't have access to from here.
+  This mirrors Phase 0's "load unpacked and confirm" gap -- it's a
+  manual step for whoever has a browser, not something to fake a
+  pass on.
+- The DOM fallback has exactly one real page's markup behind it. It's
+  designed around structural signals rather than one page's exact
+  classes, but "designed to generalize" and "verified to generalize"
+  aren't the same thing -- it hasn't been checked against a second real
+  Ticketmaster template (a non-music event page might lay out its
+  header differently).
+- `host_permissions` for the worker URL is deferred to whenever the
+  worker actually has a deployed URL and Phase 4 needs to fetch it (see
+  Decisions above).
+- The artist for a multi-performer bill is always the first entry in
+  `performers`/`performer`. That's the headliner in the one real example
+  seen so far, but nothing in the data guarantees ordering; worth
+  revisiting if it turns out to matter for openers-billed-first cases.
+
+**Verification:** `pnpm typecheck`, `pnpm lint`, `pnpm test` (54 tests,
+up from 37 -- 17 new in the extension package, which had none before this
+phase), and `pnpm build` all pass. The built `dist/manifest.json` was
+inspected by hand: `content_scripts` matches
+`https://www.ticketmaster.com/*/event/*` and points at the compiled
+content script chunk. The real fixture (genuine Ticketmaster JSON-LD)
+is exercised through the actual `TicketmasterAdapter.detect()` via
+jsdom, not just the pure parser -- confirmed it returns exactly
+`{ artist: "Chance The Rapper", date: "2026-09-13T20:00:00.000Z", venue:
+"Moody Amphitheater", city: "Austin", source: "jsonld" }`. Loading the
+unpacked extension into a real Chrome profile and confirming against
+live pages is still outstanding, as noted above.
+
 ## Phase 2 — Worker: caching and hardening — 2026-09-01
 
 **Shipped:** `/aggregate` is now safe to point a public extension at.
