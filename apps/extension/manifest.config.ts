@@ -18,4 +18,9 @@ export default defineManifest({
       run_at: "document_idle",
     },
   ],
+  permissions: ["storage"],
+  // localhost only for now -- the worker isn't deployed yet (see DEVLOG
+  // Phase 2). Add the real *.workers.dev URL here once it is; don't widen
+  // this to a wildcard host permission in the meantime.
+  host_permissions: ["http://localhost:8787/*"],
 });

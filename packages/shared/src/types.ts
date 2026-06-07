@@ -23,6 +23,12 @@ export type ArtistAggregate =
   | { status: "insufficient_data"; artistName: string; showCount: number }
   | { status: "artist_not_found"; query: string };
 
+/** What GET /aggregate actually returns on the wire: an ArtistAggregate plus caching metadata. */
+export type AggregateResponse = ArtistAggregate & {
+  cached?: boolean;
+  stale?: boolean;
+};
+
 export type EventContext = {
   artist: string;
   date: string | null; // ISO

@@ -1,5 +1,8 @@
 import type { ArtistAggregate } from "@setlist-scout/shared";
+import { normalizeArtistQuery } from "@setlist-scout/shared";
 import type { ResolvedArtist } from "./musicbrainz";
+
+export { normalizeArtistQuery };
 
 const CACHE_VERSION = "v1";
 
@@ -23,10 +26,6 @@ function aggregateKey(mbid: string): string {
 
 function mbidKey(normalizedName: string): string {
   return `mbid:${CACHE_VERSION}:${normalizedName}`;
-}
-
-export function normalizeArtistQuery(name: string): string {
-  return name.trim().replace(/\s+/g, " ").toLowerCase();
 }
 
 export function isFresh(

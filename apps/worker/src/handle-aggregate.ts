@@ -1,4 +1,4 @@
-import type { ArtistAggregate } from "@setlist-scout/shared";
+import type { AggregateResponse } from "@setlist-scout/shared";
 import { aggregateSetlists } from "./aggregate";
 import {
   AGGREGATE_FRESH_MS,
@@ -15,13 +15,8 @@ import { fetchArtistSetlists } from "./setlistfm";
 
 const SETLIST_WINDOW_DAYS = 180;
 
-export type AggregateResponseBody = ArtistAggregate & {
-  cached?: boolean;
-  stale?: boolean;
-};
-
 export type HandleAggregateResult =
-  | { httpStatus: 200; body: AggregateResponseBody }
+  | { httpStatus: 200; body: AggregateResponse }
   | {
       httpStatus: 400 | 502;
       body: { error: { code: string; message: string } };
@@ -73,7 +68,7 @@ async function resolveMbid(
 }
 
 type AggregateResolution =
-  | { status: "ok"; body: AggregateResponseBody }
+  | { status: "ok"; body: AggregateResponse }
   | { status: "upstream_unavailable" };
 
 async function resolveAggregateForMbid(
