@@ -1,3 +1,4 @@
+import { mountPanel } from "../panel/mount";
 import type { SiteAdapter } from "./adapters/site-adapter";
 import { TicketmasterAdapter } from "./adapters/ticketmaster";
 
@@ -10,6 +11,9 @@ async function run(): Promise<void> {
 
   const context = await adapter.detect();
   console.log("[setlist-scout] event detection:", context);
+  if (context) {
+    mountPanel(context);
+  }
 }
 
 void run();

@@ -10,11 +10,15 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@setlist-scout/shared": "workspace:*"
+    "@setlist-scout/shared": "workspace:*",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "^2.7.1",
     "@types/chrome": "^0.2.8",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
     "jsdom": "^25.0.1",
     "vite": "^8.2.2",
     "vitest": "^4.1.11"
