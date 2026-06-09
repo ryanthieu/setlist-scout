@@ -41,6 +41,20 @@ temporarily stopping `wrangler dev` (network error), or by pointing
 `insufficient_data`/`artist_not_found` render. Not yet checked visually
 in a live browser from this environment — see DEVLOG Phase 4.
 
+**Options (Phase 5):** right-click the extension icon → Options (or
+`chrome://extensions` → Setlist Scout → Extension options) to toggle
+auto-expand and spoiler-free mode. Settings are stored in
+`chrome.storage.local` and persist across browser restarts. Panel polish
+this phase: a skeleton loader while fetching, Escape collapses an
+expanded panel, dark mode follows the OS via `prefers-color-scheme`, and
+real 16/32/48/128 icons.
+
+**Screenshots:** not included yet — producing a real screenshot needs an
+actual loaded extension in a real Chrome window on a real page, which
+isn't something this dev environment can do (same limitation as the
+Ticketmaster/panel verification above). Worth adding once someone loads
+this for real; a fabricated "screenshot" would be worse than none.
+
 ### Worker
 
 ```bash

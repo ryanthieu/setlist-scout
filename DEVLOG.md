@@ -1,5 +1,87 @@
 # DEVLOG
 
+## Phase 5 — Polish — 2026-09-01
+
+**Shipped:** an options page (auto-expand, spoiler-free mode, persisted
+in `chrome.storage.local`), real icons, a skeleton loader instead of
+"Loading...", keyboard-dismissible panel (Escape), dark mode via
+`prefers-color-scheme`, and empty-state copy that explains why there's
+no data instead of just failing quietly.
+
+**Commits:** `b59f31c` feat(extension): options page, spoiler-free
+mode, and panel polish
+
+**Decisions:**
+- One commit, not the plan's three. Options, spoiler-free mode, and
+  the visual polish items all landed in the same `Panel.tsx`/`styles.ts`
+  rewrite as I actually built them -- there's no real prior working
+  state where, say, the options page exists without spoiler-free mode,
+  since `OptionsPage.tsx` had both toggles from the first version I
+  wrote. Same reasoning as Phases 2 and 4's commit consolidations.
+- `autoExpand` only seeds the panel's *initial* expanded/collapsed
+  state (via `useState(options.autoExpand)`); `spoilerFree` is read
+  live on every render instead. Reasoning: auto-expand is a "what
+  should happen when this panel first appears" preference -- flipping
+  it in the options page shouldn't reach into an already-open tab and
+  yank the panel open or shut. Spoiler-free is closer to a safety
+  toggle -- if someone remembers mid-browse that they want spoilers
+  hidden, it should take effect without needing to reload the page.
+  `mount.tsx` subscribes to `chrome.storage.onChanged` and re-renders
+  with fresh options on any change, which is what makes the live half
+  of that actually work.
+- Icons are a plain generated asset (a rounded-square mark with a
+  white music note), not commissioned art -- rendered at 16/32/48/128
+  from one SVG via `rsvg-convert`. Fine for "something you'd hand to a
+  friend," not meant to be a final brand identity.
+- Escape collapses the expanded panel back to a pill rather than fully
+  dismissing it. "Keyboard-dismissible" was ambiguous between "closes
+  like the X button" and "closes like the collapse button" -- went
+  with the more reversible interpretation (matches common
+  modal/popover convention: Escape closes/minimizes, it doesn't
+  usually trigger a more destructive action than a mouse click would).
+- No real screenshots in the README. A screenshot needs an actual
+  loaded extension in a real Chrome window on a real page, which this
+  environment can't produce -- adding a fabricated image claiming to
+  be a real screenshot would be actively misleading, not just
+  incomplete. Documented as a follow-up for whoever loads this for
+  real, same as the Phase 3/4 live-browser gaps.
+
+**Surprises:**
+- None upstream -- Phase 5 touched only the extension's own UI/storage
+  layer, no new API interaction.
+
+**Known gaps:**
+- **The plan's actual Phase 5 acceptance criterion -- "a fresh Chrome
+  profile can load the extension and get a working panel without any
+  setup" -- is not met, and can't be until Phase 2's worker deploy
+  happens.** `WORKER_URL` still resolves to `""` outside dev (see
+  Phase 2/4 DEVLOG entries), so a fresh install hits
+  `worker_not_configured` instead of real data. This isn't a Phase 5
+  regression -- it's the same carried-forward gap surfacing at the
+  point where the plan finally asks to verify it end-to-end.
+- Options persistence itself (`chrome.storage.local` surviving a
+  browser restart) is inherent Chrome behavior, not something our code
+  could break -- verified that the extension correctly reads and
+  writes through that API, but an actual restart-and-reopen check
+  needs a real browser.
+- Icons and the options page layout haven't been looked at in an
+  actual `chrome://extensions` listing or options tab -- only unit
+  tested and inspected via the built `dist/manifest.json` and
+  `dist/src/options/index.html`.
+- No visual dark-mode check against a real OS dark-mode toggle --
+  the CSS is structured correctly (custom properties overridden under
+  `prefers-color-scheme: dark`) but unverified visually.
+
+**Verification:** `pnpm typecheck`, `pnpm lint`, `pnpm test` (90 tests,
+up from 79 -- 11 new covering options get/set/change-notification, the
+options page's rendering and persistence, panel auto-expand,
+spoiler-free rendering, and keyboard-dismiss), and `pnpm build` all
+pass. Inspected the built `dist/manifest.json` by hand: `icons` and
+`options_page` both wired correctly, and `dist/src/options/index.html`
+correctly references its bundled script and stylesheet. Rendered the
+icon SVG at all four sizes and visually confirmed (via the Read tool)
+that the mark stays legible down to 16px.
+
 ## Phase 4 — Extension: the panel — 2026-09-01
 
 **Shipped:** the overlay actually appears. When an artist is detected on a
