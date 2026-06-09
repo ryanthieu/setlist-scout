@@ -1,8 +1,9 @@
 import { mountPanel } from "../panel/mount";
+import { DiceAdapter } from "./adapters/dice";
 import type { SiteAdapter } from "./adapters/site-adapter";
 import { TicketmasterAdapter } from "./adapters/ticketmaster";
 
-const adapters: SiteAdapter[] = [new TicketmasterAdapter()];
+const adapters: SiteAdapter[] = [new TicketmasterAdapter(), new DiceAdapter()];
 
 async function run(): Promise<void> {
   const url = new URL(location.href);

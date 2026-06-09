@@ -5,6 +5,7 @@ process.env.TZ = "UTC";
 
 import { describe, expect, it } from "vitest";
 import { extractMusicEventFromJsonLd } from "../src/content/adapters/json-ld";
+import diceEventSchema from "./fixtures/dice-event-schema.json";
 import breadcrumbSchema from "./fixtures/ticketmaster-breadcrumb-schema.json";
 import eventSchema from "./fixtures/ticketmaster-event-schema.json";
 
@@ -108,6 +109,24 @@ describe("extractMusicEventFromJsonLd", () => {
       date: null,
       venue: null,
       city: null,
+      source: "jsonld",
+    });
+  });
+
+  it("extracts a MusicEvent from a real Dice event page, including an array-valued location", () => {
+    // Dice's real JSON-LD uses the standard singular "performer" key (an
+    // array of 13, a full festival lineup) and, unlike Ticketmaster,
+    // location is itself an array of Place objects (this venue has multiple
+    // rooms) -- take the first. startDate also carries a real timezone
+    // offset here, unlike Ticketmaster's bare local-time string.
+    const result = extractMusicEventFromJsonLd([
+      JSON.stringify(diceEventSchema),
+    ]);
+    expect(result).toEqual({
+      artist: "Arca",
+      date: "2026-05-08T23:00:00.000Z",
+      venue: "Knockdown Center",
+      city: "New York",
       source: "jsonld",
     });
   });

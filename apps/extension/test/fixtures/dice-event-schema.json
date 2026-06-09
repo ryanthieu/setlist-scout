@@ -1,0 +1,135 @@
+{
+  "@context": "https://schema.org",
+  "@type": "MusicEvent",
+  "url": "https://dice.fm/event/rynlgr-c2c-nyc-2026-8th-may-knockdown-center-new-york-ruins-at-knockdown-center-new-york-tickets",
+  "name": "C2C NYC 2026",
+  "startDate": "2026-05-08T19:00:00-04:00",
+  "endDate": "2026-05-09T03:30:00-04:00",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "location": [
+    {
+      "@type": "Place",
+      "name": "Knockdown Center",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "52-19 Flushing Ave, Maspeth, NY 11378, USA",
+        "addressLocality": "New York",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.71496339999999,
+        "longitude": -73.9134793
+      },
+      "url": "https://dice.fm/venue/knockdown-center-e776"
+    },
+    {
+      "@type": "Place",
+      "name": "Ruins at Knockdown Center",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "52-19 Flushing Ave, Queens, NY 11378, USA",
+        "addressLocality": "New York",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.7156792,
+        "longitude": -73.9143788
+      },
+      "url": "https://dice.fm/venue/ruins-at-knockdown-center-owog"
+    }
+  ],
+  "image": [
+    "https://dice-media.imgix.net/attachments/2026-05-01/8fe4a1b9-6737-4d93-82e6-b819284fd227.jpg?rect=0%2C1000%2C5000%2C3000",
+    "https://dice-media.imgix.net/attachments/2026-05-01/8fe4a1b9-6737-4d93-82e6-b819284fd227.jpg?rect=1125%2C0%2C2750%2C5000",
+    "https://dice-media.imgix.net/attachments/2026-05-01/8fe4a1b9-6737-4d93-82e6-b819284fd227.jpg?rect=0%2C0%2C5000%2C5000"
+  ],
+  "description": "Italy's C2C Festival returns to Knockdown Center on May 8.\n\nThis time for their 25th Anniversary with an incredible lineup featuring Arca, Avalon Emerson & the Charm, Nourished by Time, aya, Titanic, Malibu, Elias Rønnenfelt, YHWH Nailgun, Los Thuthanaka, & NEW YORK.",
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "USD",
+    "lowPrice": "0.00",
+    "highPrice": "0.00"
+  },
+  "doorTime": "2026-05-08T19:00:00-04:00",
+  "performer": [
+    {
+      "@type": "PerformingGroup",
+      "name": "Arca",
+      "image": "https://dice-media.imgix.net/attachments/2021-07-15/909f045b-196f-4a54-b43d-92e58202289e.jpg?rect=0%2C10%2C621%2C621",
+      "url": "https://dice.fm/artist/arca-92d9"
+    },
+    {
+      "@type": "PerformingGroup",
+      "name": "Avalon Emerson & The Charm",
+      "url": "https://dice.fm/artist/avalon-emerson--the-charm-8p5a7"
+    },
+    {
+      "@type": "PerformingGroup",
+      "name": "Nourished by Time",
+      "image": "https://dice-media.imgix.net/attachments/2024-03-21/4d267169-c3a0-48cc-870a-f393bb5f7088.jpg?rect=0%2C0%2C640%2C640",
+      "url": "https://dice.fm/artist/nourished-by-time-k3xdp"
+    },
+    {
+      "@type": "PerformingGroup",
+      "name": "AYA",
+      "image": "https://dice-i-scdn-co.imgix.net/image/ab67616d0000b273507f60f24b382edc1e570812",
+      "url": "https://dice.fm/artist/aya-m2mxr"
+    },
+    {
+      "@type": "PerformingGroup",
+      "name": "Titanic",
+      "url": "https://dice.fm/artist/titanic-gy2v5"
+    },
+    {
+      "@type": "PerformingGroup",
+      "name": "Malibu",
+      "image": "https://dice-media.imgix.net/attachments/2024-08-19/fc93cd58-c23b-4ef8-9276-f4f7e0ef440a.jpg?rect=0%2C2%2C560%2C560",
+      "url": "https://dice.fm/artist/malibu-and7d"
+    },
+    {
+      "@type": "PerformingGroup",
+      "name": "Elias Rønnenfelt",
+      "image": "https://dice-media.imgix.net/attachments/2025-10-21/ba7b6e91-851f-49fd-b6b4-39ca65537999.jpg?rect=0%2C0%2C640%2C640",
+      "url": "https://dice.fm/artist/elias-rnnenfelt-qn85o"
+    },
+    {
+      "@type": "PerformingGroup",
+      "name": "YHWH Nailgun",
+      "image": "https://dice-media.imgix.net/attachments/2023-03-01/50496a96-2e86-474a-a47d-793752e58a5c.jpg?rect=0%2C0%2C640%2C640",
+      "url": "https://dice.fm/artist/yhwh-nailgun-lyqmw"
+    },
+    {
+      "@type": "PerformingGroup",
+      "name": "Los Thuthanaka",
+      "url": "https://dice.fm/artist/los-thuthanaka-mqd79"
+    },
+    {
+      "@type": "PerformingGroup",
+      "name": "NEW YORK",
+      "image": "https://dice-media.imgix.net/attachments/2024-05-17/107185a4-867c-47ce-ab69-5eade3c0e67d.jpg?rect=0%2C0%2C640%2C640",
+      "url": "https://dice.fm/artist/new-york-7v2lp"
+    },
+    {
+      "@type": "PerformingGroup",
+      "name": "DOULA",
+      "url": "https://dice.fm/artist/doula-a2mx7"
+    },
+    {
+      "@type": "PerformingGroup",
+      "name": "Galcher Lustwerk",
+      "url": "https://dice.fm/artist/galcher-lustwerk-kxyl"
+    },
+    {
+      "@type": "PerformingGroup",
+      "name": "8ULENTINA",
+      "url": "https://dice.fm/artist/8ulentina-xwyll"
+    }
+  ],
+  "organizer": {
+    "@type": "Organization",
+    "name": "Knockdown Center"
+  }
+}

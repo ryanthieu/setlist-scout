@@ -1,8 +1,9 @@
 import type { EventContext } from "@setlist-scout/shared";
+import { detectWithObserver } from "./detect-with-observer";
+import { getJsonLdScriptContents } from "./dom-helpers";
 import { extractMusicEventFromJsonLd } from "./json-ld";
 import type { SiteAdapter } from "./site-adapter";
 
-const OBSERVER_TIMEOUT_MS = 10_000;
 const EVENT_PATH = /\/event\//;
 const TICKETMASTER_HOST = /(^|\.)ticketmaster\.com$/;
 
@@ -10,12 +11,6 @@ const TICKETMASTER_HOST = /(^|\.)ticketmaster\.com$/;
 // observed in Ticketmaster's rendered event header.
 const DATE_TEXT_PATTERN =
   /(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)[a-z]*\s*[•·]\s*([A-Za-z]{3,9}\s+\d{1,2},?\s+\d{4})\s*[•·]\s*(\d{1,2}:\d{2}\s*(?:AM|PM))/i;
-
-function getJsonLdScriptContents(doc: Document): string[] {
-  return Array.from(
-    doc.querySelectorAll('script[type="application/ld+json"]'),
-  ).map((el) => el.textContent ?? "");
-}
 
 function parseVenueText(text: string): {
   venue: string | null;
@@ -78,44 +73,11 @@ export class TicketmasterAdapter implements SiteAdapter {
     );
   }
 
-  async detect(): Promise<EventContext | null> {
-    const immediate = this.tryExtract();
-    if (immediate) return immediate;
-    return this.waitForExtract();
-  }
-
-  private tryExtract(): EventContext | null {
-    return (
-      extractMusicEventFromJsonLd(getJsonLdScriptContents(document)) ??
-      extractMusicEventFromDom(document)
+  detect(): Promise<EventContext | null> {
+    return detectWithObserver(
+      () =>
+        extractMusicEventFromJsonLd(getJsonLdScriptContents(document)) ??
+        extractMusicEventFromDom(document),
     );
-  }
-
-  private waitForExtract(): Promise<EventContext | null> {
-    return new Promise((resolve) => {
-      let settled = false;
-      const finish = (result: EventContext | null) => {
-        if (settled) return;
-        settled = true;
-        clearTimeout(timeoutId);
-        observer.disconnect();
-        resolve(result);
-      };
-
-      const observer = new MutationObserver(() => {
-        const result = this.tryExtract();
-        if (result) finish(result);
-      });
-
-      const timeoutId = setTimeout(
-        () => finish(this.tryExtract()),
-        OBSERVER_TIMEOUT_MS,
-      );
-
-      observer.observe(document.documentElement, {
-        childList: true,
-        subtree: true,
-      });
-    });
   }
 }

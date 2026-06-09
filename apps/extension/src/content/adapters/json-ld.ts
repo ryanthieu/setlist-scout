@@ -63,7 +63,10 @@ function extractLocation(node: JsonLdNode): {
   venue: string | null;
   city: string | null;
 } {
-  const location = node.location;
+  // schema.org's `location` is normally a single Place, but real producers
+  // (Dice, for a multi-room venue) sometimes emit an array -- take the first.
+  const rawLocation = node.location;
+  const location = Array.isArray(rawLocation) ? rawLocation[0] : rawLocation;
   if (!isObject(location)) return { venue: null, city: null };
 
   const venue = typeof location.name === "string" ? location.name : null;

@@ -20,7 +20,10 @@ export default defineManifest({
   },
   content_scripts: [
     {
-      matches: ["https://www.ticketmaster.com/*/event/*"],
+      matches: [
+        "https://www.ticketmaster.com/*/event/*",
+        "https://dice.fm/event/*",
+      ],
       js: ["src/content/index.ts"],
       run_at: "document_idle",
     },
