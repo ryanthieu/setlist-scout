@@ -32,6 +32,10 @@ beforeEach(() => {
     runtime: {
       sendMessage: vi.fn().mockResolvedValue({ ok: true, data: SAMPLE }),
     },
+    storage: {
+      local: { get: vi.fn().mockResolvedValue({}) },
+      onChanged: { addListener: vi.fn(), removeListener: vi.fn() },
+    },
   });
 });
 

@@ -5,6 +5,7 @@ import { act } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { GetAggregateResult } from "../src/lib/messages";
+import { DEFAULT_OPTIONS, type ExtensionOptions } from "../src/lib/options";
 import { Panel } from "../src/panel/Panel";
 
 let mountedContainer: HTMLDivElement | null = null;
@@ -24,6 +25,7 @@ afterEach(() => {
 
 async function renderPanel(
   requestAggregate: (artist: string) => Promise<GetAggregateResult>,
+  options: ExtensionOptions = DEFAULT_OPTIONS,
   artist = "Test Artist",
 ): Promise<HTMLDivElement> {
   mountedContainer = document.createElement("div");
@@ -32,7 +34,13 @@ async function renderPanel(
   const root = mountedRoot;
   const container = mountedContainer;
   await act(async () => {
-    root.render(<Panel artist={artist} requestAggregate={requestAggregate} />);
+    root.render(
+      <Panel
+        artist={artist}
+        requestAggregate={requestAggregate}
+        options={options}
+      />,
+    );
   });
   return container;
 }
@@ -92,7 +100,19 @@ describe("Panel", () => {
     expect(container.querySelector(".ss-panel")).toBeNull();
   });
 
-  it("shows loading, then real data once the request resolves -- locks and rotating only, no rare songs", async () => {
+  it("starts expanded when the autoExpand option is on", async () => {
+    const container = await renderPanel(
+      async () => ({ ok: true, data: OK_DATA }),
+      {
+        ...DEFAULT_OPTIONS,
+        autoExpand: true,
+      },
+    );
+    expect(container.querySelector(".ss-panel")).not.toBeNull();
+    expect(container.querySelector(".ss-pill")).toBeNull();
+  });
+
+  it("shows a skeleton while loading, then real data once the request resolves -- locks and rotating only, no rare songs", async () => {
     let resolveRequest: (value: GetAggregateResult) => void = () => {};
     const requestAggregate = vi.fn(
       () =>
@@ -104,14 +124,13 @@ describe("Panel", () => {
     const container = await renderPanel(requestAggregate);
     await expand(container);
 
-    expect(container.querySelector(".ss-message")?.textContent).toMatch(
-      /loading/i,
-    );
+    expect(container.querySelector(".ss-skeleton")).not.toBeNull();
 
     await act(async () => {
       resolveRequest({ ok: true, data: OK_DATA });
     });
 
+    expect(container.querySelector(".ss-skeleton")).toBeNull();
     expect(container.querySelector(".ss-artist-name")?.textContent).toBe(
       "Test Artist",
     );
@@ -123,7 +142,26 @@ describe("Panel", () => {
     expect(songNames).not.toContain("Song Rare");
   });
 
-  it("shows the insufficient_data state legibly", async () => {
+  it("hides song names in spoiler-free mode, but still shows set length and encore", async () => {
+    const container = await renderPanel(
+      async () => ({ ok: true, data: OK_DATA }),
+      {
+        ...DEFAULT_OPTIONS,
+        spoilerFree: true,
+      },
+    );
+    await expand(container);
+
+    expect(container.querySelectorAll(".ss-song-name")).toHaveLength(0);
+    expect(container.querySelector(".ss-footer")?.textContent).toContain(
+      "Typical set length",
+    );
+    expect(container.querySelector(".ss-footer")?.textContent).toContain(
+      "Encore",
+    );
+  });
+
+  it("shows the insufficient_data state with an explanation, not just a failure", async () => {
     const data: AggregateResponse = {
       status: "insufficient_data",
       artistName: "Test Artist",
@@ -131,9 +169,9 @@ describe("Panel", () => {
     };
     const container = await renderPanel(async () => ({ ok: true, data }));
     await expand(container);
-    expect(container.querySelector(".ss-message")?.textContent).toMatch(
-      /not enough recent shows/i,
-    );
+    const text = container.querySelector(".ss-message")?.textContent ?? "";
+    expect(text).toMatch(/2 shows/i);
+    expect(text).toMatch(/check back/i);
   });
 
   it("shows the artist_not_found state legibly", async () => {
@@ -204,5 +242,34 @@ describe("Panel", () => {
 
     expect(container.querySelector(".ss-pill")).not.toBeNull();
     expect(container.querySelector(".ss-panel")).toBeNull();
+  });
+
+  it("is keyboard-dismissible: Escape collapses the expanded panel back to a pill", async () => {
+    const container = await renderPanel(async () => ({
+      ok: true,
+      data: OK_DATA,
+    }));
+    await expand(container);
+    expect(container.querySelector(".ss-panel")).not.toBeNull();
+
+    await act(async () => {
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape" }));
+    });
+
+    expect(container.querySelector(".ss-panel")).toBeNull();
+    expect(container.querySelector(".ss-pill")).not.toBeNull();
+  });
+
+  it("does not react to Escape while already collapsed", async () => {
+    const container = await renderPanel(async () => ({
+      ok: true,
+      data: OK_DATA,
+    }));
+
+    await act(async () => {
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape" }));
+    });
+
+    expect(container.querySelector(".ss-pill")).not.toBeNull();
   });
 });

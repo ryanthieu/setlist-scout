@@ -12,7 +12,7 @@ async function run(): Promise<void> {
   const context = await adapter.detect();
   console.log("[setlist-scout] event detection:", context);
   if (context) {
-    mountPanel(context);
+    await mountPanel(context);
   }
 }
 

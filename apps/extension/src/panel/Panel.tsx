@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { GetAggregateResult } from "../lib/messages";
+import type { ExtensionOptions } from "../lib/options";
 import {
   type OkAggregate,
   type PanelViewState,
@@ -9,13 +10,17 @@ import {
 export type PanelProps = {
   artist: string;
   requestAggregate: (artist: string) => Promise<GetAggregateResult>;
+  options: ExtensionOptions;
 };
 
-export function Panel({ artist, requestAggregate }: PanelProps) {
+export function Panel({ artist, requestAggregate, options }: PanelProps) {
   const [result, setResult] = useState<GetAggregateResult | "loading">(
     "loading",
   );
-  const [expanded, setExpanded] = useState(false);
+  // autoExpand only seeds the initial state -- toggling it later in the
+  // options page shouldn't yank open/closed a panel someone already
+  // expanded or collapsed by hand.
+  const [expanded, setExpanded] = useState(options.autoExpand);
   const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
@@ -28,6 +33,15 @@ export function Panel({ artist, requestAggregate }: PanelProps) {
       cancelled = true;
     };
   }, [artist, requestAggregate]);
+
+  useEffect(() => {
+    if (!expanded) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setExpanded(false);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [expanded]);
 
   if (dismissed) return null;
 
@@ -68,39 +82,72 @@ export function Panel({ artist, requestAggregate }: PanelProps) {
             ×
           </button>
         </div>
-        <PanelBody view={view} />
+        <PanelBody view={view} spoilerFree={options.spoilerFree} />
       </section>
     </div>
   );
 }
 
-function PanelBody({ view }: { view: PanelViewState }) {
+function PanelBody({
+  view,
+  spoilerFree,
+}: {
+  view: PanelViewState;
+  spoilerFree: boolean;
+}) {
   switch (view.kind) {
     case "loading":
-      return <p className="ss-message">Loading setlist info…</p>;
+      return <SkeletonBody />;
     case "error":
       return <p className="ss-message">{view.message}</p>;
     case "artist_not_found":
       return (
         <p className="ss-message">
-          Couldn't find "{view.query}" on setlist.fm.
+          Couldn't find "{view.query}" on setlist.fm. The name might be spelled
+          differently there, or this artist might not have a setlist.fm page
+          yet.
         </p>
       );
     case "insufficient_data":
       return (
         <p className="ss-message">
-          Not enough recent shows for {view.artistName} yet ({view.showCount} in
-          the last several months) to say what's typical.
+          {view.artistName} has only played {view.showCount} show
+          {view.showCount === 1 ? "" : "s"} recently on setlist.fm -- not enough
+          yet to say what's typical for this tour. Check back closer to the
+          show.
         </p>
       );
     case "ok":
-      return <OkBody data={view.data} />;
+      return <OkBody data={view.data} spoilerFree={spoilerFree} />;
     default:
       return null;
   }
 }
 
-function OkBody({ data }: { data: OkAggregate }) {
+function SkeletonBody() {
+  return (
+    <div
+      className="ss-skeleton"
+      role="status"
+      aria-busy="true"
+      aria-label="Loading setlist info"
+    >
+      <div className="ss-skeleton-line ss-skeleton-title" />
+      <div className="ss-skeleton-line ss-skeleton-subline" />
+      <div className="ss-skeleton-line" />
+      <div className="ss-skeleton-line" />
+      <div className="ss-skeleton-line ss-skeleton-short" />
+    </div>
+  );
+}
+
+function OkBody({
+  data,
+  spoilerFree,
+}: {
+  data: OkAggregate;
+  spoilerFree: boolean;
+}) {
   const locks = data.songs.filter((s) => s.tier === "lock");
   const rotating = data.songs.filter((s) => s.tier === "rotating");
 
@@ -119,16 +166,24 @@ function OkBody({ data }: { data: OkAggregate }) {
           days
         </p>
       </div>
-      <SongSection
-        title="Locks"
-        songs={locks}
-        emptyText="No songs played almost every night this tour."
-      />
-      <SongSection
-        title="Rotating"
-        songs={rotating}
-        emptyText="Nothing in regular rotation."
-      />
+      {spoilerFree ? (
+        <p className="ss-empty">
+          Spoiler-free mode is on — song names are hidden.
+        </p>
+      ) : (
+        <>
+          <SongSection
+            title="Locks"
+            songs={locks}
+            emptyText="No songs played almost every night this tour."
+          />
+          <SongSection
+            title="Rotating"
+            songs={rotating}
+            emptyText="Nothing in regular rotation."
+          />
+        </>
+      )}
       <div className="ss-footer">
         <p className="ss-footer-line">
           Typical set length: {data.medianSongCount} songs
