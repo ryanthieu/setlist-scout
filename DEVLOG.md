@@ -1,5 +1,87 @@
 # DEVLOG
 
+## Phase 4 — Extension: the panel — 2026-09-01
+
+**Shipped:** the overlay actually appears. When an artist is detected on a
+Ticketmaster event page, a React panel mounts into a shadow root
+(collapsed to a pill by default), sends `GET_AGGREGATE` to the background
+service worker, and renders locks, rotating songs, set-length/encore
+stats, and the setlist.fm attribution link -- or a legible message for
+every non-happy state (loading, insufficient data, artist not found,
+network error, stale data).
+
+**Commits:** `29ea684` feat(extension): background fetch bridge and
+per-session cache · `6132aa4` feat(extension): shadow DOM panel with all
+states
+
+**Decisions:**
+- Two commits instead of the plan's four. `mount.tsx` inherently renders
+  `<Panel>`, so there's no real intermediate state where "shadow DOM
+  mount" exists as working code without the panel UI behind it -- same
+  reasoning as Phase 2's caching/stale-on-error consolidation. The actual
+  seams in what I built are "the message/cache/fetch plumbing" and "the
+  panel and its shell," so that's what the two commits are.
+- Moved `normalizeArtistQuery` and the worker's response-body type (now
+  `AggregateResponse` in `packages/shared`) out of worker-only code. The
+  extension needs the exact same normalization and the exact same wire
+  shape the worker returns; duplicating either invites drift. Added a
+  `packages/shared/src/index.ts` barrel so this could happen without
+  breaking existing `@setlist-scout/shared` imports elsewhere.
+- `Panel` takes `requestAggregate` as a prop rather than calling
+  `chrome.runtime.sendMessage` itself. That's what makes it fully
+  testable via real React rendering (createRoot + act) with zero chrome
+  API mocking -- only `mount.tsx` needs the real
+  `chrome.runtime`-backed implementation, and only its own tests need a
+  `chrome` stub.
+- `WORKER_URL` resolves to `""` outside dev (worker isn't deployed --
+  Phase 2 gap) rather than a guessed `*.workers.dev` URL. An empty target
+  fails cleanly as `worker_not_configured`, and `host_permissions` stays
+  scoped to `localhost` instead of a broad wildcard granted for a URL
+  that doesn't exist yet.
+- The panel only surfaces `lock` and `rotating` tier songs, never `rare`
+  -- matches the plan's stated layout (Locks, then Rotating) and happens
+  to be a reasonable default before Phase 5's spoiler-free toggle exists.
+- Dismiss state is plain component state, not persisted anywhere.
+  "Stays dismissed for that page load" doesn't need `chrome.storage` --
+  the page unloading already clears it.
+
+**Surprises:**
+- None upstream this phase -- no new API calls, just wiring the pieces
+  from Phases 1-3 together.
+
+**Known gaps:**
+- **Not visually verified on a live Ticketmaster page.** I manually
+  confirmed the actual background fetch bridge against the real running
+  local worker (no mocks: `handleGetAggregate` genuinely fetched and
+  cached live Phish data from `wrangler dev`), and the panel's rendering
+  logic is fully covered by real React-rendering tests for every state.
+  What I can't do from here is load the unpacked extension into Chrome
+  and confirm it visually on a real page -- same category of gap as
+  Phases 0 and 3.
+- Host page style isolation (the other half of that acceptance
+  criterion) is only reasoned about, not measured: shadow DOM blocks
+  style leakage by construction, and `all: initial` plus explicit resets
+  guard against inherited properties, but I haven't put it on an actual
+  CSS-heavy page like Ticketmaster to check for a surprise like a
+  page-level `!important` rule reaching in some other way.
+- The panel pill doesn't summarize anything (it's just a static "🎵
+  Setlist Scout" label) -- deliberately simple for this phase, but worth
+  a look once Phase 5's polish pass happens.
+- `WORKER_URL` needs the real `*.workers.dev` URL filled in, and
+  `host_permissions` needs it added, once Phase 2's deploy actually
+  happens.
+
+**Verification:** `pnpm typecheck`, `pnpm lint`, `pnpm test` (79 tests,
+up from 54 -- 25 new in the extension package covering the cache,
+fetch-bridge orchestration, view-state mapping, the full Panel component
+across every state via real React rendering, and shadow-root mount
+isolation), and `pnpm build` all pass. Additionally ran a temporary,
+not-committed test that called `handleGetAggregate` with no mocks at all
+against `wrangler dev` running locally -- confirmed it genuinely fetches
+and caches real Phish data end-to-end, then deleted that file (it was a
+one-off manual check, not something that belongs in the permanent suite
+given it depends on a live local server).
+
 ## Phase 3 — Extension: event detection — 2026-09-01
 
 **Shipped:** a content script that runs on Ticketmaster event pages,

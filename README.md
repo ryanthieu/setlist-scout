@@ -32,6 +32,15 @@ bot-detection challenge) — checking it against a handful of real pages,
 including a non-music event and a Ticketmaster page that isn't an event at
 all, is a manual step still worth doing.
 
+**Verifying the panel (Phase 4):** with `pnpm dev:worker` running
+locally, open a real Ticketmaster event page for a touring artist — a
+pill should appear bottom-right; click it to expand the panel. Force the
+other states by editing `apps/extension/src/lib/worker-url.ts` or
+temporarily stopping `wrangler dev` (network error), or by pointing
+`?artist=` at something obscure via the worker directly first to see
+`insufficient_data`/`artist_not_found` render. Not yet checked visually
+in a live browser from this environment — see DEVLOG Phase 4.
+
 ### Worker
 
 ```bash
