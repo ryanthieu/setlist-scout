@@ -1,5 +1,87 @@
 # DEVLOG
 
+## Phase 6 — Second site + bustouts — 2026-09-01
+
+**Shipped:** a dice.fm adapter proving out the SiteAdapter abstraction from
+Phase 3, and bustout detection -- songs that reappear in the current tour
+after a 2+ year absence, surfaced as their own distinct section in the
+panel.
+
+**Commits:** `d5a69e9` feat(extension): dice.fm adapter · `d10b815`
+feat(worker): bustout detection · `0918d0c` feat(extension): surface
+bustouts in the panel
+
+**Decisions:**
+- Checked site reachability before picking a second site, rather than
+  assuming from the plan's own hedge ("Dice or Bandsintown"). Bandsintown
+  403s automated requests the same way Ticketmaster does; dice.fm serves
+  real HTML with no bot challenge. Went with Dice for that reason alone --
+  it's the one I could actually get a real fixture from.
+- The abstraction genuinely held, with one real fix: Dice's JSON-LD has
+  an array-valued `location` (multi-room venue), which the shared
+  extractor only handled as a single object. Fixed in `json-ld.ts` itself,
+  not special-cased per site, since it's a real JSON-LD variance either
+  site could hit. Also extracted the MutationObserver-timeout wrapper and
+  the JSON-LD DOM scan into shared modules so DiceAdapter is genuinely
+  just `matches()` + `detect()` -- no copy-pasted orchestration.
+- Bustouts use the *earliest* in-window appearance as the "comeback"
+  date, not the latest -- if a song re-enters rotation and gets played
+  three more times this tour, the bustout is the first night back, not a
+  running tally of every subsequent play.
+- A song with no appearance at all in the lookback data is skipped, not
+  flagged. That could mean "genuinely brand new" or "gap wider than we
+  looked back (3 years)" -- no way to tell which, so it says nothing
+  rather than guessing.
+- Bustouts are cached independently from the main aggregate (7-day
+  freshness vs. the aggregate's 24h) because computing them means a
+  second, much wider setlist.fm fetch (3 years back, up to 20 pages) --
+  exactly the "expensive" the plan calls out. It's triggered from
+  `handleAggregate` unconditionally whenever the aggregate status is
+  "ok" (cache hit or not), but its own internal freshness check means
+  that costs nothing beyond a KV read on all but roughly one request a
+  week per artist.
+
+**Surprises:**
+- None on the worker side -- Phish's real history behaved exactly as
+  expected once fetched.
+- Debugging the live verification below turned up a self-inflicted
+  false alarm, not a real bug: multiple `wrangler dev` processes ended
+  up running on different ports across restarts (8787 and 8788), so a
+  few verification requests silently hit a stale process running old
+  code. Worth a note for future sessions: `pkill -f "wrangler dev"`
+  before restarting isn't always enough to guarantee a clean single
+  instance -- check `lsof -i :8787` if a request's behavior doesn't
+  match the code you just changed.
+
+**Known gaps:**
+- `fetchArtistSetlists` (Phase 1) has no built-in pacing between
+  sequential page requests -- fine at the main aggregate's 1-3 pages,
+  more exposed at bustouts' up-to-20. Nothing failed in testing here,
+  but a genuinely deep-catalog artist's bustout computation is the
+  single most likely place this project would ever actually hit
+  setlist.fm's rate limit. Not fixed this phase -- worth a real look if
+  it ever happens for real rather than adding speculative throttling
+  now.
+- Dice has no DOM fallback (unlike Ticketmaster) since real pages
+  reliably carry the JSON-LD -- if that ever proves false, Phase 3's
+  brittle-DOM-selector pattern is right there to copy.
+- The "second site" acceptance criterion ("both sites work from the
+  same build") is confirmed at the manifest/bundle level -- one content
+  script chunk, two match patterns -- but, same as Ticketmaster and
+  Dice individually, hasn't been checked by loading the unpacked
+  extension into a real Chrome profile on a live dice.fm page.
+
+**Verification:** `pnpm typecheck`, `pnpm lint`, `pnpm test` (114 tests,
+up from 90), and `pnpm build` all pass; the built manifest's
+`content_scripts` matches both `ticketmaster.com/*/event/*` and
+`dice.fm/event/*` against the same compiled chunk. Bustouts were
+verified twice against real data: first by hand (fetched 25 real pages of
+Phish history via curl/python, found genuine multi-year gaps -- "Back in
+the U.S.S.R." after 12.7 years, several 2.5-3 year bustouts -- before
+writing any assertions), then live against the actual running worker
+(`wrangler dev`, real setlist.fm calls, no mocks), which independently
+reproduced the same bustouts with matching dates and gap lengths.
+
 ## Phase 5 — Polish — 2026-09-01
 
 **Shipped:** an options page (auto-expand, spoiler-free mode, persisted

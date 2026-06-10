@@ -55,6 +55,18 @@ isn't something this dev environment can do (same limitation as the
 Ticketmaster/panel verification above). Worth adding once someone loads
 this for real; a fabricated "screenshot" would be worse than none.
 
+**Second site (Phase 6):** dice.fm event pages (`dice.fm/event/*`) work
+the same way as Ticketmaster's — same content script, same panel.
+Bandsintown was the plan's other suggestion but 403s automated requests,
+so it wasn't usable for building a real fixture from here.
+
+**Bustouts (Phase 6):** songs that reappear in the current tour after a
+2+ year gap show up in their own highlighted section in the panel.
+Computing them means a second, wider setlist.fm fetch (3 years back), so
+they're cached separately from the main aggregate (7-day freshness) and
+may take a moment to appear on an artist's first request. Verified for
+real against Phish's actual touring history — see DEVLOG Phase 6.
+
 ### Worker
 
 ```bash
