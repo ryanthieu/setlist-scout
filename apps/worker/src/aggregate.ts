@@ -1,4 +1,5 @@
 import type { ArtistAggregate, SongStat } from "@setlist-scout/shared";
+import { normalizeArtistQuery } from "@setlist-scout/shared";
 import { parseSetlistFmDate } from "./date";
 import type { SetlistFmSetlist, SetlistFmSong } from "./setlistfm";
 
@@ -14,14 +15,10 @@ type SongAccumulator = {
   isCover: boolean;
 };
 
-function flattenSongs(setlist: SetlistFmSetlist): SetlistFmSong[] {
+export function flattenSongs(setlist: SetlistFmSetlist): SetlistFmSong[] {
   return setlist.sets.set.flatMap((set) =>
     (set.song ?? []).filter((song) => !song.tape),
   );
-}
-
-function normalizeName(name: string): string {
-  return name.trim().replace(/\s+/g, " ").toLowerCase();
 }
 
 function tierFor(playRate: number): SongStat["tier"] {
@@ -105,7 +102,7 @@ export function aggregateSetlists(input: {
   for (const setlist of qualifying) {
     const songsInThisShow = new Set<string>();
     for (const song of flattenSongs(setlist)) {
-      const key = normalizeName(song.name);
+      const key = normalizeArtistQuery(song.name);
       const displayName = song.name.trim().replace(/\s+/g, " ");
 
       let acc = accumulators.get(key);

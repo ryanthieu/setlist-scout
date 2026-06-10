@@ -11,6 +11,7 @@ import {
   putCachedMbid,
 } from "./cache";
 import { resolveArtist } from "./musicbrainz";
+import { resolveBustouts } from "./resolve-bustouts";
 import { fetchArtistSetlists } from "./setlistfm";
 
 const SETLIST_WINDOW_DAYS = 180;
@@ -31,6 +32,7 @@ export type HandleAggregateInput = {
   now?: Date;
   resolveArtistFn?: typeof resolveArtist;
   fetchArtistSetlistsFn?: typeof fetchArtistSetlists;
+  resolveBustoutsFn?: typeof resolveBustouts;
 };
 
 type MbidResolution =
@@ -132,6 +134,7 @@ export async function handleAggregate(
     now = new Date(),
     resolveArtistFn = resolveArtist,
     fetchArtistSetlistsFn = fetchArtistSetlists,
+    resolveBustoutsFn = resolveBustouts,
   } = input;
 
   if (!artistQuery && !mbidQuery) {
@@ -203,6 +206,17 @@ export async function handleAggregate(
         },
       },
     };
+  }
+
+  if (aggregateResolution.body.status === "ok") {
+    const bustouts = await resolveBustoutsFn(
+      mbid,
+      kv,
+      apiKey,
+      now,
+      fetchArtistSetlistsFn,
+    );
+    return { httpStatus: 200, body: { ...aggregateResolution.body, bustouts } };
   }
 
   return { httpStatus: 200, body: aggregateResolution.body };

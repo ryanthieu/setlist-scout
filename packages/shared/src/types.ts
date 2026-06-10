@@ -6,6 +6,14 @@ export type SongStat = {
   isCover: boolean;
 };
 
+/** A song played in the current touring window whose only prior appearance (within the lookback window) was more than 2 years earlier. */
+export type Bustout = {
+  name: string;
+  comebackDate: string; // ISO -- first time it reappeared in the current window
+  previousDate: string; // ISO -- its most recent appearance before that, found within the lookback window
+  gapDays: number;
+};
+
 export type ArtistAggregate =
   | {
       status: "ok";
@@ -19,6 +27,9 @@ export type ArtistAggregate =
       hasEncore: boolean;
       songs: SongStat[]; // sorted by playRate desc
       sourceUrl: string; // setlist.fm artist page, for attribution
+      // Absent until computed (it's expensive -- see worker's bustouts.ts),
+      // present-but-empty once computed with nothing found.
+      bustouts?: Bustout[];
     }
   | { status: "insufficient_data"; artistName: string; showCount: number }
   | { status: "artist_not_found"; query: string };

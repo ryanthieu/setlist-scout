@@ -33,6 +33,10 @@ function baseInput(
     apiKey: "test-key",
     userAgent: "test-agent",
     now: NOW,
+    // Bustout resolution is its own concern (see resolve-bustouts.test.ts);
+    // stub it out here so these tests aren't exercising two features per
+    // fetchArtistSetlistsFn call count.
+    resolveBustoutsFn: vi.fn().mockResolvedValue(undefined),
     ...overrides,
   };
 }
@@ -252,5 +256,52 @@ describe("handleAggregate", () => {
       "test-key",
       expect.anything(),
     );
+  });
+
+  it("attaches bustouts to an ok response", async () => {
+    const resolveArtistFn = vi.fn().mockResolvedValue({
+      mbid: "m1",
+      name: "Test Artist",
+      score: 100,
+    } as ResolvedArtist);
+    const fetchArtistSetlistsFn = vi.fn().mockResolvedValue(buildSetlists(5));
+    const bustouts = [
+      {
+        name: "Deep Cut",
+        comebackDate: "2026-08-01T00:00:00.000Z",
+        previousDate: "2020-01-01T00:00:00.000Z",
+        gapDays: 2404,
+      },
+    ];
+    const resolveBustoutsFn = vi.fn().mockResolvedValue(bustouts);
+
+    const result = await handleAggregate(
+      baseInput({
+        artistQuery: "Test Artist",
+        resolveArtistFn,
+        fetchArtistSetlistsFn,
+        resolveBustoutsFn,
+      }),
+    );
+
+    expect(resolveBustoutsFn).toHaveBeenCalledWith(
+      "m1",
+      expect.anything(),
+      "test-key",
+      NOW,
+      fetchArtistSetlistsFn,
+    );
+    expect(result.body).toMatchObject({ status: "ok", bustouts });
+  });
+
+  it("does not call resolveBustoutsFn when the artist can't be resolved", async () => {
+    const resolveArtistFn = vi.fn().mockResolvedValue(null);
+    const resolveBustoutsFn = vi.fn();
+
+    await handleAggregate(
+      baseInput({ artistQuery: "zzxqwv", resolveArtistFn, resolveBustoutsFn }),
+    );
+
+    expect(resolveBustoutsFn).not.toHaveBeenCalled();
   });
 });
