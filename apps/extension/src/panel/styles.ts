@@ -27,6 +27,9 @@ export const PANEL_STYLES = `
   --ss-stale-bg: #fff6e5;
   --ss-stale-border: #f0d68a;
   --ss-link: #0066cc;
+  --ss-bustout-bg: #fff1ee;
+  --ss-bustout-border: #f4b8a8;
+  --ss-bustout-accent: #c2410c;
 
   color: var(--ss-text);
 }
@@ -46,6 +49,9 @@ export const PANEL_STYLES = `
     --ss-skeleton-highlight: #414148;
     --ss-stale-bg: #3a2f10;
     --ss-stale-border: #6b5a1f;
+    --ss-bustout-bg: #3a2418;
+    --ss-bustout-border: #7a3f28;
+    --ss-bustout-accent: #ff9166;
     --ss-link: #6cb2ff;
   }
 }
@@ -164,6 +170,32 @@ export const PANEL_STYLES = `
   color: var(--ss-text-faint);
   font-size: 12px;
   margin: 0;
+}
+
+.ss-bustouts {
+  background: var(--ss-bustout-bg);
+  border: 1px solid var(--ss-bustout-border);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.ss-bustouts-title {
+  color: var(--ss-bustout-accent);
+}
+
+.ss-bustout-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 3px 0;
+  font-weight: 600;
+}
+
+.ss-bustout-gap {
+  color: var(--ss-bustout-accent);
+  flex-shrink: 0;
+  font-weight: 500;
+  font-size: 12px;
 }
 
 .ss-stale-banner {

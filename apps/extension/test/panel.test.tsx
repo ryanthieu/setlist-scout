@@ -200,6 +200,62 @@ describe("Panel", () => {
     );
   });
 
+  it("surfaces bustouts in their own distinct section", async () => {
+    const withBustout: AggregateResponse = {
+      ...OK_DATA,
+      bustouts: [
+        {
+          name: "Deep Cut",
+          comebackDate: "2026-07-29T00:00:00.000Z",
+          previousDate: "2023-10-13T00:00:00.000Z",
+          gapDays: 1020,
+        },
+      ],
+    };
+    const container = await renderPanel(async () => ({
+      ok: true,
+      data: withBustout,
+    }));
+    await expand(container);
+
+    const bustoutSection = container.querySelector(".ss-bustouts");
+    expect(bustoutSection).not.toBeNull();
+    expect(bustoutSection?.textContent).toContain("Deep Cut");
+    expect(bustoutSection?.textContent).toMatch(/years/);
+  });
+
+  it("does not render a bustouts section when there are none", async () => {
+    const container = await renderPanel(async () => ({
+      ok: true,
+      data: OK_DATA,
+    }));
+    await expand(container);
+    expect(container.querySelector(".ss-bustouts")).toBeNull();
+  });
+
+  it("hides bustouts in spoiler-free mode too", async () => {
+    const withBustout: AggregateResponse = {
+      ...OK_DATA,
+      bustouts: [
+        {
+          name: "Deep Cut",
+          comebackDate: "2026-07-29T00:00:00.000Z",
+          previousDate: "2023-10-13T00:00:00.000Z",
+          gapDays: 1020,
+        },
+      ],
+    };
+    const container = await renderPanel(
+      async () => ({ ok: true, data: withBustout }),
+      {
+        ...DEFAULT_OPTIONS,
+        spoilerFree: true,
+      },
+    );
+    await expand(container);
+    expect(container.querySelector(".ss-bustouts")).toBeNull();
+  });
+
   it("shows a stale-data notice alongside real data when stale: true", async () => {
     const container = await renderPanel(async () => ({
       ok: true,

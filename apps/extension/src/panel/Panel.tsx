@@ -172,6 +172,9 @@ function OkBody({
         </p>
       ) : (
         <>
+          {data.bustouts && data.bustouts.length > 0 && (
+            <BustoutSection bustouts={data.bustouts} />
+          )}
           <SongSection
             title="Locks"
             songs={locks}
@@ -201,6 +204,39 @@ function OkBody({
         </a>
       </div>
     </>
+  );
+}
+
+function formatGapYears(gapDays: number): string {
+  const years = gapDays / 365;
+  return years >= 2
+    ? `${Math.round(years)} years`
+    : `${years.toFixed(1)} years`;
+}
+
+/** Bustouts get their own distinct, called-out treatment -- this is the
+ * emotionally interesting data (a song that hadn't been played in years
+ * suddenly turning up), and blending it into the plain Rotating list would
+ * bury the moment that actually deserves it. */
+function BustoutSection({
+  bustouts,
+}: {
+  bustouts: NonNullable<OkAggregate["bustouts"]>;
+}) {
+  return (
+    <div className="ss-section ss-bustouts">
+      <p className="ss-section-title ss-bustouts-title">🔥 Bustouts</p>
+      <ul className="ss-song-list">
+        {bustouts.map((b) => (
+          <li key={b.name} className="ss-bustout-row">
+            <span className="ss-song-name">{b.name}</span>
+            <span className="ss-bustout-gap">
+              back after {formatGapYears(b.gapDays)}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
