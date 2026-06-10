@@ -3,6 +3,7 @@ dist/
 .wrangler/
 .dev.vars
 *.log
+*.zip
 .DS_Store
 .vscode/*
 !.vscode/extensions.json
