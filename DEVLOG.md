@@ -1,5 +1,83 @@
 # DEVLOG
 
+## Phase 7 — Store readiness — 2026-09-01
+
+**Shipped:** the pieces of store-readiness that don't require a deployed
+backend or a real browser -- permissions audit, an explicit production
+build config, a real privacy policy, draft store listing copy with a
+generated promo tile, a test formalizing the Phase 0 attribution
+requirement, and the `v1.0.0` tag.
+
+**Commits:** `5d6f60e` chore: production build config · `0f0ffc8` docs:
+privacy policy and store listing · (this entry) · `chore: release
+v1.0.0` (tag, after this entry)
+
+**Decisions:**
+- `host_permissions` is now conditional on `NODE_ENV`: `localhost:8787`
+  ships in dev builds (`vite`, for testing against `wrangler dev`) and
+  is stripped entirely from production builds (`vite build`). Confirmed
+  this actually works rather than assuming: `vite build` sets
+  `NODE_ENV=production` unconditionally regardless of `--mode`, which
+  is exactly the distinction that matters here (`pnpm build` vs. local
+  `pnpm dev`), not a mode flag. Production currently ships with zero
+  host_permissions, which is correct and honest -- there's no deployed
+  worker yet to grant access to.
+- Wrote real privacy-policy content rather than a placeholder, but the
+  Chrome Web Store form needs an actual *hosted* URL for it, which this
+  repo doesn't have yet (no GitHub Pages, no deployed worker domain).
+  Documented as a submission blocker rather than pretending the
+  Markdown file alone satisfies the requirement.
+- Generated the small promo tile (440×280) from the same SVG-based
+  icon/color system as the app icons (`rsvg-convert`, no headless
+  browser available). Deliberately did *not* attempt a fabricated
+  "screenshot" of the panel in a mocked-up ticket page -- a promo tile
+  is understood to be branding art, but a Chrome Web Store screenshot
+  is supposed to show the real running product, and faking one (even
+  built from the real CSS) would cross from "asset I can honestly
+  produce" into "claiming to be something it isn't." Real screenshots
+  are flagged as a submission blocker instead.
+- Bumped the extension's own version to 1.0.0 (it's what
+  `manifest.config.ts` reads for the shipped manifest version and what
+  the package script embeds in the zip filename). Left the worker,
+  shared package, and root package.json versions alone -- they're
+  private/internal and don't correspond to anything a user or the
+  Chrome Web Store sees; only the extension's version is externally
+  meaningful here.
+- Tagging `v1.0.0` locally marks this as the submission-candidate
+  snapshot the plan's Phase 7 asks for, not a claim that it has
+  actually been submitted or is deployed -- see Known gaps.
+
+**Surprises:**
+- None this phase -- no new upstream interaction, just build config
+  and documentation.
+
+**Known gaps -- genuinely blocking actual store submission, not just
+loose ends:**
+- **The worker still isn't deployed** (carried since Phase 2). Without
+  it, `host_permissions` has nothing to point at and the extension
+  can't fetch real data in production at all.
+- **No real screenshots.** Needs an actual browser loading the unpacked
+  extension on a live Ticketmaster or Dice page.
+- **No hosted privacy policy URL.** The content is real and complete
+  (`PRIVACY.md`); it just isn't reachable at a URL yet.
+- Given the above, `v1.0.0` is a *candidate* tag -- the code is in the
+  shape the plan's Phase 7 describes, but "publishable" in the literal
+  sense (someone could actually click submit on the Chrome Web Store
+  form right now) is not yet true. Whoever picks this up next should
+  resolve the three items above before actually submitting, not treat
+  the tag itself as permission to do so.
+
+**Verification:** `pnpm typecheck`, `pnpm lint`, `pnpm test` (116 tests,
+up from 114 -- 2 new covering the setlist.fm attribution link's href,
+visible text, and absence of `nofollow`), and `pnpm build` all pass.
+Built production output and confirmed by hand: `dist/manifest.json` has
+an empty `host_permissions` array; a `vite build --mode development`
+run confirmed `NODE_ENV` stays `production` regardless of `--mode`
+(matching the intended dev-vs-build distinction, not a mode distinction).
+Ran the new `pnpm --filter @setlist-scout/extension package` script and
+inspected the resulting zip's contents directly (`unzip -l`) -- matches
+`dist/` exactly, no sourcemaps, includes the options page.
+
 ## Phase 6 — Second site + bustouts — 2026-09-01
 
 **Shipped:** a dice.fm adapter proving out the SiteAdapter abstraction from

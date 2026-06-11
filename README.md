@@ -67,6 +67,17 @@ they're cached separately from the main aggregate (7-day freshness) and
 may take a moment to appear on an artist's first request. Verified for
 real against Phish's actual touring history — see DEVLOG Phase 6.
 
+**Store readiness (Phase 7):** `pnpm --filter @setlist-scout/extension
+build` now produces a production manifest with `host_permissions`
+stripped down to nothing (localhost is dev-only; there's no deployed
+worker URL yet to grant access to instead). Package it for upload with
+`pnpm --filter @setlist-scout/extension package`, which zips whatever is
+actually in `dist/` into `apps/extension/setlist-scout-v<version>.zip`.
+See `PRIVACY.md` for the privacy policy and `STORE_LISTING.md` for draft
+listing copy and an honest checklist of what's still needed before an
+actual submission (a deployed worker, real screenshots, a hosted URL for
+the privacy policy) — see DEVLOG Phase 7.
+
 ### Worker
 
 ```bash
