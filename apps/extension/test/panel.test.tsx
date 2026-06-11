@@ -142,6 +142,34 @@ describe("Panel", () => {
     expect(songNames).not.toContain("Song Rare");
   });
 
+  it("attributes setlist.fm as required by their API terms: a visible link to the artist's page, no nofollow", async () => {
+    const container = await renderPanel(async () => ({
+      ok: true,
+      data: OK_DATA,
+    }));
+    await expand(container);
+
+    const link = container.querySelector(
+      ".ss-attribution",
+    ) as HTMLAnchorElement | null;
+    expect(link).not.toBeNull();
+    expect(link?.textContent).toMatch(/setlist\.fm/i);
+    expect(link?.getAttribute("href")).toBe(OK_DATA.sourceUrl);
+    expect(link?.getAttribute("rel")).not.toContain("nofollow");
+  });
+
+  it("shows the attribution link even in spoiler-free mode (it's not a song name)", async () => {
+    const container = await renderPanel(
+      async () => ({ ok: true, data: OK_DATA }),
+      {
+        ...DEFAULT_OPTIONS,
+        spoilerFree: true,
+      },
+    );
+    await expand(container);
+    expect(container.querySelector(".ss-attribution")).not.toBeNull();
+  });
+
   it("hides song names in spoiler-free mode, but still shows set length and encore", async () => {
     const container = await renderPanel(
       async () => ({ ok: true, data: OK_DATA }),
