@@ -1,5 +1,69 @@
 # DEVLOG
 
+## Post-release — worker deployed for real — 2026-09-02
+
+Not one of plan.md's seven phases -- this is the follow-up where the
+biggest carried-forward gap (worker never actually deployed, flagged in
+every DEVLOG entry from Phase 2 through Phase 7) finally closed, once I
+had Cloudflare account access.
+
+**Shipped:** `wrangler kv namespace create CACHE`, `wrangler secret put
+SETLISTFM_API_KEY`, `wrangler deploy`. Live at
+`https://setlist-scout-worker.ryanthieu1.workers.dev`. Wired the real KV
+namespace id into `wrangler.toml`, the real URL into
+`apps/extension/src/lib/worker-url.ts`'s production branch, and the same
+URL (only that URL, not a wildcard) into `manifest.config.ts`'s
+production `host_permissions`.
+
+**Decisions:**
+- The repo is now pushed to a public GitHub remote
+  (https://github.com/ryanthieu/setlist-scout), which incidentally
+  resolves the other outstanding Phase 7 blocker: `PRIVACY.md` now
+  renders at a real, reachable URL
+  (github.com/ryanthieu/setlist-scout/blob/main/PRIVACY.md) without
+  needing a dedicated hosted page. Updated `STORE_LISTING.md`'s gap
+  list to reflect both closures rather than leaving stale "not done"
+  markers next to things that are now done.
+- Did not edit the "Known gaps" text in the Phase 7 DEVLOG entry above
+  to remove the now-resolved worker/privacy-URL items. That entry is an
+  honest record of what was true when Phase 7 actually shipped; this
+  new entry is where "and now it's resolved" belongs. Editing history
+  to make a past phase look more finished than it was at the time would
+  defeat the point of keeping a DEVLOG at all.
+
+**Surprises:**
+- The very first live `/aggregate?artist=Phish` request came back `502
+  upstream_unavailable` (MusicBrainz). Retried a few seconds later and
+  it succeeded, then stayed cached -- this matches the exact "503
+  currently busy" flakiness from MusicBrainz documented back in Phase
+  1, just now observed from Cloudflare's network instead of this dev
+  sandbox's. Not a deployment bug; MusicBrainz is just occasionally
+  slow to respond, and the stale-on-error path (Phase 2) exists
+  precisely for this.
+
+**Known gaps:**
+- Real screenshots are now the *only* remaining item on
+  `STORE_LISTING.md`'s checklist before an actual Chrome Web Store
+  submission -- needs a real browser loading the unpacked extension on
+  a live page, which is still outside what either this environment or
+  a backend deploy can provide.
+- `git push` for this and the `v1.0.0` tag happened from a different
+  session than the one that did Phases 1-7; worth noting only because
+  it means the credentials/remote setup live outside this repo's own
+  history (`.git/config`, not committed) -- anyone cloning fresh will
+  need their own `wrangler login` and `gh` auth, this doesn't travel
+  with the code.
+
+**Verification:** hit the real deployed worker directly:
+`GET /health` → `{"ok":true}`; `GET /aggregate?artist=Phish` → real
+`status: "ok"` data matching what local `wrangler dev` testing produced
+throughout Phases 1-6, after one transient MusicBrainz retry. Rebuilt
+the extension and confirmed by hand: `dist/manifest.json`'s
+`host_permissions` is exactly the one real worker URL, and the built
+background bundle contains that URL with zero remaining references to
+`localhost:8787`. Full `pnpm typecheck`/`lint`/`test`/`build` all still
+pass (116 tests).
+
 ## Phase 7 — Store readiness — 2026-09-01
 
 **Shipped:** the pieces of store-readiness that don't require a deployed

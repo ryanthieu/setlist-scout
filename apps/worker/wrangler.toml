@@ -3,9 +3,6 @@ main = "src/index.ts"
 compatibility_date = "2026-09-01"
 compatibility_flags = ["nodejs_compat"]
 
-# Created with `wrangler kv namespace create CACHE` — replace the placeholder
-# id below with the real one before running `pnpm --filter worker deploy`.
-# Unused until Phase 2.
 [[kv_namespaces]]
 binding = "CACHE"
-id = "REPLACE_WITH_REAL_KV_NAMESPACE_ID"
+id = "a0e42d1a46be49a3b3d7fa745026cbd0"

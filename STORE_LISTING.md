@@ -61,7 +61,7 @@ English (United States)
   extension's core function. Not used to determine creditworthiness or
   for lending purposes. (All standard "no" answers on the CWS data-use
   disclosure form.)
-- Privacy policy URL: [pending — see Known gaps below].
+- Privacy policy URL: https://github.com/ryanthieu/setlist-scout/blob/main/PRIVACY.md
 
 ## Assets
 
@@ -74,19 +74,20 @@ English (United States)
 
 ## Known gaps — do not submit until these are resolved
 
-- **No privacy policy URL yet.** `PRIVACY.md` has the real content, but
-  it needs to actually be hosted somewhere reachable (e.g. rendered on
-  GitHub Pages, or a page on the eventual deployed worker's domain) before
-  the store form will accept a URL for it.
+- ~~The worker isn't deployed~~ **Resolved 2026-09-02.** Live at
+  `https://setlist-scout-worker.ryanthieu1.workers.dev`; the extension's
+  production build points at it.
+- ~~No privacy policy URL~~ **Resolved 2026-09-02.** The repo is now
+  public at https://github.com/ryanthieu/setlist-scout, so
+  `PRIVACY.md` renders at
+  https://github.com/ryanthieu/setlist-scout/blob/main/PRIVACY.md — a
+  real, reachable URL. Good enough for an unlisted/personal submission;
+  worth a dedicated hosted page (e.g. off the worker's own domain) if
+  this ever goes for a public listing.
 - **No real screenshots.** Chrome Web Store screenshots need to show the
   actual running extension on a real page in a real browser, which this
   dev environment can't produce (same limitation noted in DEVLOG Phases
   3–6 for visual verification generally). Someone with a browser needs
   to load the unpacked extension, visit a live Ticketmaster or Dice event
   page for a touring artist, and capture the panel in both collapsed and
-  expanded states.
-- **The worker isn't deployed** (DEVLOG Phase 2), so a reviewer testing
-  the extension against a live page will currently see a
-  "server isn't configured yet" error state rather than real data. This
-  needs to be resolved before actual submission, not just before this
-  document is written.
+  expanded states. This is now the only remaining blocker.

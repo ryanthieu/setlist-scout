@@ -1,10 +1,9 @@
 /**
- * The worker hasn't been deployed yet (see DEVLOG Phase 2) -- there is no
- * real production URL to point at. Rather than hardcode a guess and grant
- * a host_permission for it, production intentionally has no target yet:
- * requests will fail with a network error (surfaced as the "error" panel
- * state) until this is filled in after `wrangler deploy` runs for real.
+ * Deployed 2026-09-02 via `wrangler deploy` (see README). Update this if
+ * the worker is ever redeployed under a different name or moved to a
+ * custom domain -- and keep manifest.config.ts's production
+ * host_permissions in sync with whatever's here.
  */
 export const WORKER_URL: string = import.meta.env.DEV
   ? "http://localhost:8787"
-  : "";
+  : "https://setlist-scout-worker.ryanthieu1.workers.dev";

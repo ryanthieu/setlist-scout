@@ -97,14 +97,12 @@ npx wrangler secret put SETLISTFM_API_KEY
 npx wrangler deploy
 ```
 
-The worker deploys to the free `*.workers.dev` subdomain; no custom domain
-is configured. **Not yet deployed as of Phase 2** — this environment isn't
-logged into Cloudflare, so the actual `wrangler login` / namespace creation
-/ deploy is a manual step for whoever has account access. Everything else
-(caching, stale-on-error, CORS, throttling, `?mbid=`) is implemented and
-verified locally via `wrangler dev`, which runs a local KV simulation
-without needing a real namespace. Once deployed, put the live
-`*.workers.dev` URL here.
+**Deployed 2026-09-02:** `https://setlist-scout-worker.ryanthieu1.workers.dev`
+(free `*.workers.dev` subdomain, no custom domain). Verified live —
+`/health` and a real `/aggregate?artist=Phish` call both returned correct
+data after deploy. The extension's production build
+(`apps/extension/src/lib/worker-url.ts`) and manifest
+`host_permissions` both point at this URL now.
 
 ### `/aggregate` behavior (Phase 2)
 

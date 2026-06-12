@@ -36,10 +36,9 @@ export default defineManifest({
   permissions: ["storage"],
   // localhost is a dev-only convenience for talking to `wrangler dev` --
   // it has no purpose in a shipped build and would just be a confusing,
-  // unjustifiable line item in a store permissions review. The worker
-  // itself isn't deployed yet (see DEVLOG Phase 2), so production
-  // currently ships with no host_permissions at all: add the real
-  // *.workers.dev URL here once it exists, and only that URL, not a
-  // wildcard.
-  host_permissions: isProduction ? [] : ["http://localhost:8787/*"],
+  // unjustifiable line item in a store permissions review. Production
+  // grants exactly the one real worker URL, nothing wider.
+  host_permissions: isProduction
+    ? ["https://setlist-scout-worker.ryanthieu1.workers.dev/*"]
+    : ["http://localhost:8787/*"],
 });
