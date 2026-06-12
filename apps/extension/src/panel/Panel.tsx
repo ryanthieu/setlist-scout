@@ -26,9 +26,28 @@ export function Panel({ artist, requestAggregate, options }: PanelProps) {
   useEffect(() => {
     let cancelled = false;
     setResult("loading");
-    requestAggregate(artist).then((r) => {
-      if (!cancelled) setResult(r);
-    });
+    requestAggregate(artist)
+      .then((r) => {
+        if (!cancelled) setResult(r);
+      })
+      .catch(() => {
+        // chrome.runtime.sendMessage rejects (rather than resolving with
+        // { ok: false, ... }) when the background service worker isn't
+        // there to receive it -- e.g. it crashed on load, or hasn't woken
+        // up yet. Without this, that left the panel stuck on the loading
+        // skeleton forever instead of showing the error state it already
+        // has for exactly this kind of failure.
+        if (!cancelled) {
+          setResult({
+            ok: false,
+            error: {
+              code: "messaging_error",
+              message:
+                "Couldn't reach the extension's background worker. Try reloading the page.",
+            },
+          });
+        }
+      });
     return () => {
       cancelled = true;
     };

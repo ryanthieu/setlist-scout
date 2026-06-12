@@ -228,6 +228,20 @@ describe("Panel", () => {
     );
   });
 
+  it("shows an error state instead of hanging forever when requestAggregate rejects", async () => {
+    // chrome.runtime.sendMessage rejects (doesn't resolve with an ok:false
+    // value) when the background service worker isn't there to receive
+    // it -- this must not leave the panel stuck on the loading skeleton.
+    const container = await renderPanel(() =>
+      Promise.reject(new Error("Could not establish connection.")),
+    );
+    await expand(container);
+    expect(container.querySelector(".ss-skeleton")).toBeNull();
+    expect(container.querySelector(".ss-message")?.textContent).toMatch(
+      /couldn't reach/i,
+    );
+  });
+
   it("surfaces bustouts in their own distinct section", async () => {
     const withBustout: AggregateResponse = {
       ...OK_DATA,
