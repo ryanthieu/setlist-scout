@@ -61,7 +61,8 @@ English (United States)
   extension's core function. Not used to determine creditworthiness or
   for lending purposes. (All standard "no" answers on the CWS data-use
   disclosure form.)
-- Privacy policy URL: https://github.com/ryanthieu/setlist-scout/blob/main/PRIVACY.md
+- Privacy policy URL: [pending — the GitHub repo is private, so
+  `PRIVACY.md` isn't publicly reachable yet; see Known gaps below]
 
 ## Assets
 
@@ -77,17 +78,16 @@ English (United States)
 - ~~The worker isn't deployed~~ **Resolved 2026-09-02.** Live at
   `https://setlist-scout-worker.ryanthieu1.workers.dev`; the extension's
   production build points at it.
-- ~~No privacy policy URL~~ **Resolved 2026-09-02.** The repo is now
-  public at https://github.com/ryanthieu/setlist-scout, so
-  `PRIVACY.md` renders at
-  https://github.com/ryanthieu/setlist-scout/blob/main/PRIVACY.md — a
-  real, reachable URL. Good enough for an unlisted/personal submission;
-  worth a dedicated hosted page (e.g. off the worker's own domain) if
-  this ever goes for a public listing.
+- **No privacy policy URL.** `PRIVACY.md` has the real content, but the
+  GitHub repo is **private**, so it isn't publicly reachable there. Two
+  ways to close this: make the repo public (fine content-wise, but a
+  separate call than just fixing a listing gap), or host `PRIVACY.md`
+  somewhere actually public — e.g. a route on the now-deployed worker,
+  or GitHub Pages from a public fork/mirror of just this file.
 - **No real screenshots.** Chrome Web Store screenshots need to show the
   actual running extension on a real page in a real browser, which this
   dev environment can't produce (same limitation noted in DEVLOG Phases
   3–6 for visual verification generally). Someone with a browser needs
   to load the unpacked extension, visit a live Ticketmaster or Dice event
   page for a touring artist, and capture the panel in both collapsed and
-  expanded states. This is now the only remaining blocker.
+  expanded states.

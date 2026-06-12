@@ -16,20 +16,22 @@ URL (only that URL, not a wildcard) into `manifest.config.ts`'s
 production `host_permissions`.
 
 **Decisions:**
-- The repo is now pushed to a public GitHub remote
-  (https://github.com/ryanthieu/setlist-scout), which incidentally
-  resolves the other outstanding Phase 7 blocker: `PRIVACY.md` now
-  renders at a real, reachable URL
-  (github.com/ryanthieu/setlist-scout/blob/main/PRIVACY.md) without
-  needing a dedicated hosted page. Updated `STORE_LISTING.md`'s gap
-  list to reflect both closures rather than leaving stale "not done"
-  markers next to things that are now done.
+- The repo is now pushed to a GitHub remote
+  (https://github.com/ryanthieu/setlist-scout) -- but it's **private**,
+  which I got wrong in the first version of this entry and in
+  `STORE_LISTING.md` (both briefly, incorrectly claimed this made
+  `PRIVACY.md` publicly reachable and resolved that Phase 7 blocker; a
+  private repo obviously doesn't do that). Corrected both in a
+  follow-up commit rather than leaving the mistake standing. The
+  privacy-policy-URL gap is still open.
 - Did not edit the "Known gaps" text in the Phase 7 DEVLOG entry above
-  to remove the now-resolved worker/privacy-URL items. That entry is an
+  to remove the now-resolved worker-deployment item. That entry is an
   honest record of what was true when Phase 7 actually shipped; this
   new entry is where "and now it's resolved" belongs. Editing history
   to make a past phase look more finished than it was at the time would
-  defeat the point of keeping a DEVLOG at all.
+  defeat the point of keeping a DEVLOG at all. (This doesn't apply to
+  the correction above -- that's fixing a mistake made minutes earlier
+  in this same entry, not revising an honest past record.)
 
 **Surprises:**
 - The very first live `/aggregate?artist=Phish` request came back `502
@@ -42,11 +44,13 @@ production `host_permissions`.
   precisely for this.
 
 **Known gaps:**
-- Real screenshots are now the *only* remaining item on
-  `STORE_LISTING.md`'s checklist before an actual Chrome Web Store
-  submission -- needs a real browser loading the unpacked extension on
-  a live page, which is still outside what either this environment or
-  a backend deploy can provide.
+- **No privacy policy URL still.** The GitHub repo is private, so
+  `PRIVACY.md` isn't publicly reachable there. Needs either making the
+  repo public or hosting the policy somewhere that actually is (e.g. a
+  route on the now-deployed worker).
+- Real screenshots -- needs a real browser loading the unpacked
+  extension on a live page, which is still outside what either this
+  environment or a backend deploy can provide.
 - `git push` for this and the `v1.0.0` tag happened from a different
   session than the one that did Phases 1-7; worth noting only because
   it means the credentials/remote setup live outside this repo's own
