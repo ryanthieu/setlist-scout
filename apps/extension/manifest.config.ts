@@ -20,7 +20,12 @@ export default defineManifest({
   },
   options_page: "src/options/index.html",
   background: {
-    service_worker: "src/background/index.ts",
+    // Named service-worker.ts, not index.ts -- crxjs was resolving this
+    // and content/index.ts (identical basename, different directory) to
+    // the same compiled chunk, silently wiring the background loader to
+    // the content script's code instead. The background's real
+    // onMessage listener was being built but never actually loaded.
+    service_worker: "src/background/service-worker.ts",
     type: "module",
   },
   content_scripts: [
@@ -29,7 +34,7 @@ export default defineManifest({
         "https://www.ticketmaster.com/*/event/*",
         "https://dice.fm/event/*",
       ],
-      js: ["src/content/index.ts"],
+      js: ["src/content/main.ts"],
       run_at: "document_idle",
     },
   ],
