@@ -1,5 +1,67 @@
 # DEVLOG
 
+## Post-release — chrome.storage unavailable in the content script — 2026-09-02
+
+Second real bug found via live testing, right after fixing the first
+(background service worker not loading). Once messaging to the
+background worked, the panel got as far as mounting and then hit a new
+uncaught error: `Cannot read properties of undefined (reading 'local')`,
+originating in our own bundled code (`main.ts-*.js` in the stack trace).
+
+**Root cause:** `chrome.storage` is `undefined` inside this project's
+actual content script execution context in the live browser.
+`mount.tsx` called `getOptions()`, which reads `chrome.storage.local`
+directly -- that line threw before the panel could render anything
+beyond the pill shell.
+
+**A diagnostic dead end worth remembering:** I asked to check
+`chrome.storage` from the page's own DevTools console, and it printed
+`undefined` -- but that's not meaningful evidence either way. The
+default DevTools console executes in the page's own JS world, not the
+content script's isolated world; `chrome.storage` would print
+`undefined` there regardless of whether the content script has real
+access to it. The actual uncaught error (with a stack trace pointing
+into our own compiled chunk) was the only reliable signal here, not
+the console check I asked for.
+
+**Fix:** added a `GET_OPTIONS` message, handled by the background
+exactly like `GET_AGGREGATE` already is. The background's
+`chrome.storage` access is proven working in production (it's what
+backs the aggregate session cache), so this routes around whatever is
+actually wrong with content-script storage access rather than
+requiring a full diagnosis of *why* it's unavailable there. Dropped the
+live `chrome.storage.onChanged` subscription that let an already-open
+panel pick up option changes instantly -- it depended on the same
+unavailable API. Removed `onOptionsChanged` from `lib/options.ts`
+entirely rather than leave it as unused code once nothing called it.
+
+**Decisions:**
+- Didn't chase down *why* `chrome.storage` specifically is unavailable
+  in the content script world here (dynamic-import-based ESM content
+  scripts, which is how crxjs loads ours, are one candidate
+  explanation, but unconfirmed). Routing around it via a channel
+  already proven to work live was faster and more reliable than a
+  deeper investigation with no browser access of my own to iterate
+  against.
+
+**Known gaps:**
+- Options no longer live-update an already-open panel; changing a
+  setting takes effect on the next page load. Worth revisiting if that
+  turns out to matter in practice.
+- The *why* behind content-script `chrome.storage` unavailability is
+  still not understood, just routed around. If anything else ever
+  needs a chrome.* API from inside a content script directly (not just
+  storage), it may hit the same wall.
+- Not yet re-verified live as of this entry -- confirmed only that the
+  built background bundle now contains the `GET_OPTIONS` handling
+  (`grep`'d the compiled chunk directly) and that all tests/build pass.
+
+**Verification:** `pnpm typecheck`, `pnpm lint`, `pnpm test` (115
+tests -- down from 117; removed 2 tests for the deleted
+`onOptionsChanged`), and `pnpm build` all pass. Confirmed in the built
+output: `GET_OPTIONS` appears in the compiled background chunk that
+`service-worker-loader.js` actually imports.
+
 ## Post-release — the background service worker was never loading — 2026-09-02
 
 Found by actually loading the unpacked extension in a real Chrome profile
