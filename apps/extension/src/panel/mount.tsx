@@ -1,7 +1,8 @@
 import type { EventContext } from "@setlist-scout/shared";
 import { createRoot } from "react-dom/client";
-import { getOptions, onOptionsChanged } from "../lib/options";
+import { DEFAULT_OPTIONS } from "../lib/options";
 import { requestAggregateViaRuntime } from "../lib/request-aggregate";
+import { requestOptionsViaRuntime } from "../lib/request-options";
 import { Panel } from "./Panel";
 import { PANEL_STYLES } from "./styles";
 
@@ -24,17 +25,20 @@ export async function mountPanel(context: EventContext): Promise<void> {
   const container = document.createElement("div");
   shadowRoot.appendChild(container);
 
-  const root = createRoot(container);
-  const render = (options: Awaited<ReturnType<typeof getOptions>>) => {
-    root.render(
-      <Panel
-        artist={context.artist}
-        requestAggregate={requestAggregateViaRuntime}
-        options={options}
-      />,
-    );
-  };
+  // chrome.storage isn't reachable directly from this content script
+  // context (confirmed live), so options come from the background via
+  // messaging instead -- same as the aggregate fetch. That also means
+  // there's no live chrome.storage.onChanged subscription here anymore:
+  // changing options while a panel is already open takes effect on the
+  // next page load, not immediately. Worth revisiting if that turns out
+  // to matter in practice.
+  const options = await requestOptionsViaRuntime().catch(() => DEFAULT_OPTIONS);
 
-  render(await getOptions());
-  onOptionsChanged(render);
+  createRoot(container).render(
+    <Panel
+      artist={context.artist}
+      requestAggregate={requestAggregateViaRuntime}
+      options={options}
+    />,
+  );
 }

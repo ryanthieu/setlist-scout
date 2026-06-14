@@ -28,13 +28,17 @@ const CONTEXT: EventContext = {
 };
 
 beforeEach(() => {
+  // mount.tsx no longer touches chrome.storage directly (it's unavailable
+  // in this project's content script context -- see DEVLOG); options come
+  // via a GET_OPTIONS message to the background, same channel as the
+  // aggregate fetch.
   vi.stubGlobal("chrome", {
     runtime: {
-      sendMessage: vi.fn().mockResolvedValue({ ok: true, data: SAMPLE }),
-    },
-    storage: {
-      local: { get: vi.fn().mockResolvedValue({}) },
-      onChanged: { addListener: vi.fn(), removeListener: vi.fn() },
+      sendMessage: vi.fn((message: { type: string }) =>
+        message.type === "GET_OPTIONS"
+          ? Promise.resolve({ autoExpand: false, spoilerFree: false })
+          : Promise.resolve({ ok: true, data: SAMPLE }),
+      ),
     },
   });
 });
