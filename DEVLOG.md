@@ -1,5 +1,69 @@
 # DEVLOG
 
+## Post-release — the background service worker was never loading — 2026-09-02
+
+Found by actually loading the unpacked extension in a real Chrome profile
+and visiting a live Ticketmaster page for the first time -- the first
+real end-to-end test this project has had. Every "not yet verified in a
+live browser" gap noted throughout Phases 0-7 was exactly this kind of
+risk; this is the first one that turned out to hide a real bug.
+
+**Symptom:** the panel got stuck on the loading skeleton forever.
+Console showed `[setlist-scout] event detection: Object` (detection
+genuinely worked) immediately followed by `Uncaught (in promise) Error:
+Could not establish connection. Receiving end does not exist.` -- the
+signature of `chrome.runtime.sendMessage` finding no listener at all.
+
+**Root cause:** `apps/extension/src/background/index.ts` and
+`apps/extension/src/content/index.ts` share the identical basename
+(`index.ts`) in different directories. crxjs's manifest-rewriting
+resolved *both* the background `service_worker` entry and the content
+script entry to the same compiled chunk -- the content script's code.
+The background's real `onMessage` listener was being built into its own
+chunk in `dist/`, but nothing in the generated manifest ever loaded it.
+Reproduced identically across multiple from-scratch rebuilds (`rm -rf
+dist node_modules/.vite`), so this wasn't stale build-cache noise -- it
+was deterministic given these two entry filenames.
+
+**Fix:** renamed both entries to distinct basenames
+(`background/service-worker.ts`, `content/main.ts`) and updated
+`manifest.config.ts` to match. Verified in the actual built output this
+time, not just by re-running the existing test suite: grepped the
+compiled chunks directly for `onMessage` vs. `attachShadow` and
+confirmed `service-worker-loader.js` now imports the right one.
+
+**Why none of Phases 0-7's tests caught this:** every background/panel
+test imports `handleGetAggregate`, `Panel`, `aggregate-cache`, etc.
+directly by module path and exercises them in isolation -- which is
+exactly right for testing that logic, but it can never catch a bug in
+how the *bundler* wires those modules into the actual shipped manifest.
+"The modules work correctly" and "the bundler loads the right modules"
+turned out to be two different claims, and only one of them had any
+test coverage. This is the sharpest version yet of the "not verified in
+a live browser" gap flagged in nearly every DEVLOG entry since Phase 0 --
+worth remembering specifically as a *category* of bug that unit tests
+structurally cannot catch, not just bad luck this one time.
+
+**Known gaps:**
+- No automated check exists for "does the built manifest actually wire
+  up the entries I think it does." Could be added (e.g. a small script
+  that inspects `dist/manifest.json` plus greps the referenced chunks
+  for expected symbols, run as part of `pnpm build`), but wasn't added
+  here -- this fix closes the one instance found, not the whole class
+  of risk.
+- Not yet re-verified live after this fix (the person testing hadn't
+  reloaded the rebuilt unpacked extension and re-tested as of this
+  entry). The fix is confirmed correct at the build-output level; full
+  confirmation is "the panel actually shows real data on a live page."
+
+**Verification:** `pnpm typecheck`, `pnpm lint`, `pnpm test` (117
+tests, unchanged pass count -- this bug was invisible to all of them,
+which is the point), and `pnpm build` all pass. Confirmed directly in
+`dist/`: `service-worker-loader.js` imports the chunk containing
+`onMessage`; the content script's loader imports the chunk containing
+`attachShadow`. These were the same chunk before the fix and are
+different chunks after it.
+
 ## Post-release — worker deployed for real — 2026-09-02
 
 Not one of plan.md's seven phases -- this is the follow-up where the
