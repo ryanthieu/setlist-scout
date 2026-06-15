@@ -4,8 +4,6 @@ A Chrome extension that overlays setlist intelligence onto ticket purchase
 pages: when you're looking at an event page for an artist, it tells you what
 they've actually been playing on this tour.
 
-See `CLAUDE.md` for the working agreement.
-
 ## Setup
 
 ```bash
